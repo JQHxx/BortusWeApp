@@ -1,0 +1,264 @@
+<style lang="less">
+  input {
+    border: 1rpx solid #ccc;
+    display: inline-block;
+    width: 200rpx;
+    border-radius: 5rpx;
+  }
+  .info {
+    padding-right: 10rpx;
+  }
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+  .slide {
+    width: 640rpx;
+    display: flex;
+    border: 1rpx solid #ccc;
+    font-size: 28rpx;
+    align-items: center;
+    box-sizing: border-box;
+    .left {
+      width: 750rpx;
+      padding: 20rpx;
+    }
+    .right {
+      display: flex;
+      .right-item {
+        padding: 20rpx 30rpx;
+        background-color: red;
+        color: #fff;
+      }
+    }
+  }
+</style>
+<template>
+  <div class="container">
+    <div class="userinfo" @tap="handleViewTap">
+      <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
+      <div class="userinfo-nickname">{{ userInfo.nickName }}</div>
+    </div>
+
+    <panel>
+      <div class="title" slot="title">测试数据绑定</div>
+
+      <text class="info" @tap="currentTime = +new Date()">{{currentTime}}</text>
+      <text class="info">{{setTimeoutTitle}}</text>
+      <text class="info" @tap="mixintap">{{mixin}}</text>
+      <text class="info">{{testcomputed}}</text>
+      <text class="info">{{counter}}</text>
+    </panel>
+
+    <panel>
+      <div class="title" slot="title">其它测试</div>
+      <button @tap="communicate" size="mini">组件通信</button>
+      <button @tap="tap" size="mini">混合TAP事件</button>
+    </panel>
+
+    <panel>
+      <div class="title" slot="title">测试并发网络请求</div>
+      <div>返回结果: <text>{{netrst}}</text></div>
+      <button @tap="request" size="mini"> 点我发起10个请求 </button>
+    </panel>
+
+     <panel>
+       <div class="title" slot="title">测试 v-model</div>
+       <div style="display: flex; align-items: center;">
+         <input v-model="inputmodel" />
+         <text style="margin-left: 30rpx;">Value: {{inputmodel}}</text>
+       </div>
+     </panel>
+
+    <panel>
+      <div class="title" slot="title">测试组件</div>
+
+      <text class="testcounter">全局计数器：</text>
+      <div class="counterview">
+        <button @tap="mynum++" size="mini">全局计数器: {{mynum}}</button>
+      </div>
+
+      <text class="testcounter">计数组件1 - num: </text>
+      <div class="counterview">
+
+        <counter @index-emit.user="counterEmit" />
+      </div>
+
+      <text class="testcounter">计数组件2 - num.sync: </text>
+
+      <div class="counterview">
+        <counter :num.sync="mynum"></counter>
+      </div>
+    </panel>
+
+    <panel>
+      <div class="title" slot="title">测试组件Repeat</div>
+      <div v-for="(item, index) in groupList">
+        <group :grouplist="item" :index="index"></group>
+      </div>
+    </panel>
+
+    <panel>
+      <div class="title" slot="title">测试列表</div>
+      <list></list>
+    </panel>
+
+    <panel>
+      <div class="title" slot="title">测试引用第三方原生组件</div>
+     </panel>
+    <!--toast /-->
+  </div>
+</template>
+
+<script lang="typescript">
+  import wepy from '@wepy/core'
+  import eventHub from '../common/eventHub'
+  import testMixin from '../mixins/test'
+
+  wepy.page({
+    config: {
+      navigationBarTitleText: 'test'
+    },
+    hooks: {
+      'before-setData': function (dirty: any) {
+        if (Math.random() < 0.2) {
+          console.log('setData canceled');
+          return false;
+        }
+        dirty.time = +new Date();
+        return dirty;
+      }
+    },
+
+    mixins: [testMixin],
+
+    data: {
+      inputmodel: 'v-model',
+      mynum: 20,
+      userInfo: {
+        nickName: '加载中...'
+      },
+      currentTime: +new Date(),
+      setTimeoutTitle: '标题三秒后会被修改',
+      count: 0,
+      netrst: '',
+      groupList: [
+        {
+          id: 1,
+          name: '点击改变',
+          list: [
+            {
+              childid: '1.1',
+              childname: '子项，点我改变'
+            }, {
+              childid: '1.2',
+              childname: '子项，点我改变'
+            }, {
+              childid: '1.3',
+              childname: '子项，点我改变'
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: '点击改变',
+          list: [
+            {
+              childid: '2.1',
+              childname: '子项，点我改变'
+            }, {
+              childid: '2.2',
+              childname: '子项，点我改变'
+            }, {
+              childid: '2.3',
+              childname: '子项，点我改变'
+            }
+          ]
+        },
+        {
+          id: 3,
+          name: '点击改变',
+          list: [
+            {
+              childid: '3.1',
+              childname: '子项，点我改变'
+            }
+          ]
+        }
+      ]
+    },
+
+    methods: {
+      handleViewTap () {
+        console.log('handleVieTap clicked');
+      },
+      tap () {
+        throw 'can not go here';
+      },
+      plus () {
+        this.mynum++
+      },
+      communicate () {
+        eventHub.$emit('app-launch', {a: 1}, {b: 2});
+      },
+      request () {
+        let self = this
+        let i = 10
+        let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
+        while (i--) {
+          wx.request({
+            url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
+            success: function (d) {
+              if (d.statusCode !== 200) {
+                self.netrst += d.statusCode + '.';
+              } else {
+                self.netrst += d.data + '.';
+              }
+            }
+          })
+        }
+      },
+      counterEmit (num: any) {
+        console.log(`${this.$is} receive event, the number is: ${num}`);
+      }
+    },
+
+    created () {
+      let self = this
+      self.currentTime = +new Date(); 
+
+      self.setTimeoutTitle = '标题三秒后会被修改';
+      setTimeout(() => {
+        self.setTimeoutTitle = '到三秒了';
+      }, 3000);
+
+      wx.getUserInfo({
+        success (res) {
+          self.userInfo = res.userInfo;
+        }
+      });
+    }
+  });
+</script>
+<config>
+{
+    navigationBarTitleText: 'WePY 2.0 Feature Demo',
+    usingComponents: {
+      panel: '~@/components/panel',
+      counter: '~counter',
+      list: '~@/components/list',
+      group: '../components/group'
+    }
+}
+</config>
