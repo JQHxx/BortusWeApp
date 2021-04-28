@@ -131,10 +131,7 @@ button:last-child{
           <div class="weui-cell weui-cell_switch">
             <div class="weui-cell__bd">指示点</div>
             <div class="weui-cell__ft">
-              <switch
-                v-bind:checked="indicatorDots"
-                v-on:change="changeIndicatorDots"
-              />
+              <switch v-bind:checked="indicatorDots" v-on:change="changeIndicatorDots" />
             </div>
           </div>
           <div class="weui-cell weui-cell_switch">
