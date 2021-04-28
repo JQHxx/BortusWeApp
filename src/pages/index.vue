@@ -1,264 +1,202 @@
 <style lang="less">
-  input {
-    border: 1rpx solid #ccc;
-    display: inline-block;
-    width: 200rpx;
-    border-radius: 5rpx;
-  }
-  .info {
-    padding-right: 10rpx;
-  }
-  .userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+page {
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+.page-body{
+  padding-top: 60rpx;
+  width: 100%;
+}
+.page-section{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+.page-section_center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-section:last-child{
+  margin-bottom: 0;
+}
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.page-section-spacing{
+  box-sizing: border-box;
+  padding: 0 80rpx;
+}
+.page-section-title{
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.page-section-gap .page-section-title{
+  padding-left: 0;
+  padding-right: 0;
+}
 
-  .userinfo-avatar {
-    width: 80rpx;
-    height: 80rpx;
-    border-radius: 50%;
-  }
+.demo-text-1{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #1AAD19;
+  color: #FFFFFF;
+  font-size: 36rpx;
+}
+.demo-text-1:before{
+  content: 'A';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-2{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #2782D7;
+  color: #FFFFFF;
+  font-size: 36rpx;
+}
+.demo-text-2:before{
+  content: 'B';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-3{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #F1F1F1;
+  color: #353535;
+  font-size: 36rpx;
+}
+.demo-text-3:before{
+  content: 'C';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .userinfo-nickname {
-    color: #aaa;
-  }
-  .slide {
-    width: 640rpx;
-    display: flex;
-    border: 1rpx solid #ccc;
-    font-size: 28rpx;
-    align-items: center;
-    box-sizing: border-box;
-    .left {
-      width: 750rpx;
-      padding: 20rpx;
-    }
-    .right {
-      display: flex;
-      .right-item {
-        padding: 20rpx 30rpx;
-        background-color: red;
-        color: #fff;
-      }
-    }
-  }
+button{
+  margin-bottom: 30rpx;
+}
+button:last-child{
+  margin-bottom: 0;
+}
+.page-section-title{
+  padding: 0;
+}
+.swiper-item{
+  display: block;
+  height: 150px;
+}
+.page-section-title{
+  margin-top: 60rpx;
+  position: relative;
+}
+.info{
+  position: absolute;
+  right: 0;
+  color: #353535;
+  font-size: 30rpx;
+}
+.page-foot{
+  margin-top: 50rpx;
+}
 </style>
 <template>
   <div class="container">
-    <div class="userinfo" @tap="handleViewTap">
-      <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
-      <div class="userinfo-nickname">{{ userInfo.nickName }}</div>
+    <div class="page-body">
+      <div class="page-section page-section-spacing swiper">
+        <swiper v-bind:indicator-dots="indicatorDots" v-bind:autoplay="autoplay" v-bind:interval="interval" v-bind:duration="duration">
+          <block v-for="item in background">
+            <swiper-item>
+              <div class="swiper-item {{item}}"></div>
+            </swiper-item>
+          </block>
+        </swiper>
+      </div>
+      <div class="page-section" style="margin-top: 40rpx; margin-bottom: 0">
+        <div class="weui-cells weui-cells_after-title">
+          <div class="weui-cell weui-cell_switch">
+            <div class="weui-cell__bd">指示点</div>
+            <div class="weui-cell__ft">
+              <switch
+                v-bind:checked="indicatorDots"
+                v-on:change="changeIndicatorDots"
+              />
+            </div>
+          </div>
+          <div class="weui-cell weui-cell_switch">
+            <div class="weui-cell__bd">自动播放</div>
+            <div class="weui-cell__ft">
+              <switch v-bind:checked="autoplay" v-on:change="changeAutoplay" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-section page-section-spacing">
+        <div class="page-section-title">
+          <text>幻灯片切换时长(ms)</text>
+          <text class="info">{{ duration }}</text>
+        </div>
+        <slider v-on:change="durationChange($event.$wx)" v-bind:value="duration" min="500" max="2000" />
+        <div class="page-section-title">
+          <text>自动播放间隔时长(ms)</text>
+          <text class="info">{{ interval }}</text>
+        </div>
+        <slider v-on:change="intervalChange($event.$wx)" v-bind:value="interval" min="2000" max="10000" />
+      </div>
     </div>
-
-    <panel>
-      <div class="title" slot="title">测试数据绑定</div>
-
-      <text class="info" @tap="currentTime = +new Date()">{{currentTime}}</text>
-      <text class="info">{{setTimeoutTitle}}</text>
-      <text class="info" @tap="mixintap">{{mixin}}</text>
-      <text class="info">{{testcomputed}}</text>
-      <text class="info">{{counter}}</text>
-    </panel>
-
-    <panel>
-      <div class="title" slot="title">其它测试</div>
-      <button @tap="communicate" size="mini">组件通信</button>
-      <button @tap="tap" size="mini">混合TAP事件</button>
-    </panel>
-
-    <panel>
-      <div class="title" slot="title">测试并发网络请求</div>
-      <div>返回结果: <text>{{netrst}}</text></div>
-      <button @tap="request" size="mini"> 点我发起10个请求 </button>
-    </panel>
-
-     <panel>
-       <div class="title" slot="title">测试 v-model</div>
-       <div style="display: flex; align-items: center;">
-         <input v-model="inputmodel" />
-         <text style="margin-left: 30rpx;">Value: {{inputmodel}}</text>
-       </div>
-     </panel>
-
-    <panel>
-      <div class="title" slot="title">测试组件</div>
-
-      <text class="testcounter">全局计数器：</text>
-      <div class="counterview">
-        <button @tap="mynum++" size="mini">全局计数器: {{mynum}}</button>
-      </div>
-
-      <text class="testcounter">计数组件1 - num: </text>
-      <div class="counterview">
-
-        <counter @index-emit.user="counterEmit" />
-      </div>
-
-      <text class="testcounter">计数组件2 - num.sync: </text>
-
-      <div class="counterview">
-        <counter :num.sync="mynum"></counter>
-      </div>
-    </panel>
-
-    <panel>
-      <div class="title" slot="title">测试组件Repeat</div>
-      <div v-for="(item, index) in groupList">
-        <group :grouplist="item" :index="index"></group>
-      </div>
-    </panel>
-
-    <panel>
-      <div class="title" slot="title">测试列表</div>
-      <list></list>
-    </panel>
-
-    <panel>
-      <div class="title" slot="title">测试引用第三方原生组件</div>
-     </panel>
-    <!--toast /-->
   </div>
 </template>
 
 <script lang="typescript">
-  import wepy from '@wepy/core'
-  import eventHub from '../common/eventHub'
-  import testMixin from '../mixins/test'
+import wepy from '@wepy/core';
 
-  wepy.page({
-    config: {
-      navigationBarTitleText: 'test'
-    },
-    hooks: {
-      'before-setData': function (dirty: any) {
-        if (Math.random() < 0.2) {
-          console.log('setData canceled');
-          return false;
-        }
-        dirty.time = +new Date();
-        return dirty;
-      }
-    },
-
-    mixins: [testMixin],
-
-    data: {
-      inputmodel: 'v-model',
-      mynum: 20,
-      userInfo: {
-        nickName: '加载中...'
-      },
-      currentTime: +new Date(),
-      setTimeoutTitle: '标题三秒后会被修改',
-      count: 0,
-      netrst: '',
-      groupList: [
-        {
-          id: 1,
-          name: '点击改变',
-          list: [
-            {
-              childid: '1.1',
-              childname: '子项，点我改变'
-            }, {
-              childid: '1.2',
-              childname: '子项，点我改变'
-            }, {
-              childid: '1.3',
-              childname: '子项，点我改变'
-            }
-          ]
-        },
-        {
-          id: 2,
-          name: '点击改变',
-          list: [
-            {
-              childid: '2.1',
-              childname: '子项，点我改变'
-            }, {
-              childid: '2.2',
-              childname: '子项，点我改变'
-            }, {
-              childid: '2.3',
-              childname: '子项，点我改变'
-            }
-          ]
-        },
-        {
-          id: 3,
-          name: '点击改变',
-          list: [
-            {
-              childid: '3.1',
-              childname: '子项，点我改变'
-            }
-          ]
-        }
-      ]
-    },
-
-    methods: {
-      handleViewTap () {
-        console.log('handleVieTap clicked');
-      },
-      tap () {
-        throw 'can not go here';
-      },
-      plus () {
-        this.mynum++
-      },
-      communicate () {
-        eventHub.$emit('app-launch', {a: 1}, {b: 2});
-      },
-      request () {
-        let self = this
-        let i = 10
-        let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
-        while (i--) {
-          wx.request({
-            url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
-            success: function (d) {
-              if (d.statusCode !== 200) {
-                self.netrst += d.statusCode + '.';
-              } else {
-                self.netrst += d.data + '.';
-              }
-            }
-          })
-        }
-      },
-      counterEmit (num: any) {
-        console.log(`${this.$is} receive event, the number is: ${num}`);
-      }
-    },
-
-    created () {
-      let self = this
-      self.currentTime = +new Date(); 
-
-      self.setTimeoutTitle = '标题三秒后会被修改';
-      setTimeout(() => {
-        self.setTimeoutTitle = '到三秒了';
-      }, 3000);
-
-      wx.getUserInfo({
-        success (res) {
-          self.userInfo = res.userInfo;
-        }
-      });
+wepy.page({
+  onShareAppMessage() {
+    return {
+      title: 'swiper',
+      path: 'pages/index'
     }
-  });
+  },
+  data: {
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500
+  },
+  methods: {
+    changeIndicatorDots() {
+      this.indicatorDots = !this.indicatorDots
+    },
+    changeAutoplay() {
+      this.autoplay = !this.autoplay
+    },
+    intervalChange(e: WechatMiniprogram.SliderChange) {
+      this.interval = e.detail.value
+    },
+    durationChange(e: WechatMiniprogram.SliderChange) {
+      this.duration = e.detail.value
+    }
+  }
+});
 </script>
 <config>
 {
-    navigationBarTitleText: 'WePY 2.0 Feature Demo',
-    usingComponents: {
-      panel: '~@/components/panel',
-      counter: '~counter',
-      list: '~@/components/list',
-      group: '../components/group'
-    }
+    navigationBarTitleText: 'swiper'
 }
 </config>

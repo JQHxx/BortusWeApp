@@ -13,7 +13,8 @@
       "paths": {
       },
       "types": [
-        "weixin-app"
+        "weixin-app",
+        "miniprogram-api-typings"
       ],
       "allowJs": true,
       "allowSyntheticDefaultImports": true,
