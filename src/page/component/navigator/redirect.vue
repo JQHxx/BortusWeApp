@@ -1,9 +1,9 @@
 <style lang="less">
 </style>
 <template>
-  <web-view
-    src="https://developers.weixin.qq.com/miniprogram/dev/component/"
-  ></web-view>
+<view class="container">
+  <head title="当前页"/>
+</view>
 </template>
 
 <script lang="typescript">
@@ -12,15 +12,19 @@ import wepy from '@wepy/core';
 wepy.page({
   onShareAppMessage() {
     return {
-      title: '小程序组件文档',
-      path: 'page/component/doc-web-view',
-    };
+      title: 'redirectPage',
+      path: 'page/component/pages/navigator/redirect'
+    }
   },
+
+  onLoad(options) {
+    console.log(options)
+  }
 });
 </script>
 <config>
 {
-    "navigationBarTitleText": "小程序组件文档"
+    "navigationBarTitleText": "redirectPage"
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

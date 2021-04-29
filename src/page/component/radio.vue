@@ -1,39 +1,40 @@
 <style lang="less">
-@import '../../common/lib/weui.wxss';
+@import '../../common/lib/weui.less';
 
-.checkbox {
+.radio {
   margin-right: 10px;
 }
 </style>
 <template>
   <div class="container">
-    <head title="checkbox" />
+    <head title="radio" />
+
     <div class="page-body">
       <div class="page-section page-section-gap">
         <div class="page-section-title">默认样式</div>
-        <label class="checkbox">
-          <checkbox value="cb" checked="true" />选中
-        </label>
-        <label class="checkbox"> <checkbox value="cb" />未选中 </label>
+        <label class="radio"> <radio value="r1" checked="true" />选中 </label>
+        <label class="radio"> <radio value="r2" />未选中 </label>
       </div>
+
       <div class="page-section">
         <div class="page-section-title">推荐展示样式</div>
         <div class="weui-cells weui-cells_after-title">
-          <checkbox-group @change="checkboxChange">
+          <radio-group @change="radioChange">
             <label
               class="weui-cell weui-check__label"
               v-for="item in items"
               v-bind:key="item.value"
             >
               <div class="weui-cell__hd">
-                <checkbox v-bind:value="item.value" v-model="item.checked" />
+                <radio v-bind:value="item.value" checked="true" />
               </div>
               <div class="weui-cell__bd">{{ item.name }}</div>
             </label>
-          </checkbox-group>
+          </radio-group>
         </div>
       </div>
     </div>
+
     <foot />
   </div>
 </template>
@@ -44,8 +45,8 @@ import wepy from '@wepy/core';
 wepy.page({
   onShareAppMessage() {
     return {
-      title: 'checkbox',
-      path: 'page/component/pages/checkbox/checkbox',
+      title: 'radio',
+      path: 'page/component/pages/radio/radio',
     };
   },
 
@@ -59,20 +60,13 @@ wepy.page({
       { value: 'FRA', name: '法国' },
     ],
   },
-  methods: {
-    checkboxChange(e: WechatMiniprogram.CheckboxGroupChange) {
-      console.log('checkbox发生change事件，携带value值为：', e.detail.value);
 
+  methods: {
+    radioChange(e: WechatMiniprogram.RadioGroupChange) {
+      console.log('radio发生change事件，携带value值为：', e.detail.value);
       const items = this.items;
-      const values = e.detail.value;
-      for (let i = 0, lenI = items.length; i < lenI; ++i) {
-        items[i].checked = false;
-        for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-          if (items[i].value === values[j]) {
-            items[i].checked = true;
-            break;
-          }
-        }
+      for (let i = 0, len = items.length; i < len; ++i) {
+        items[i].checked = items[i].value === e.detail.value;
       }
       this.items = items;
     }
@@ -81,7 +75,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "checkbox"
+    "navigationBarTitleText": "radio"
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

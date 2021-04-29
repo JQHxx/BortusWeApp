@@ -1,9 +1,9 @@
 <style lang="less">
 </style>
 <template>
-  <web-view
-    src="https://developers.weixin.qq.com/miniprogram/dev/component/"
-  ></web-view>
+<view class="container">
+  <head title="新建的页面"/>
+</view>
 </template>
 
 <script lang="typescript">
@@ -12,15 +12,19 @@ import wepy from '@wepy/core';
 wepy.page({
   onShareAppMessage() {
     return {
-      title: '小程序组件文档',
-      path: 'page/component/doc-web-view',
-    };
+      title: 'navigatePage',
+      path: 'page/component/pages/navigator/navigate'
+    }
   },
+
+  onLoad(options) {
+    console.log(options)
+  }
 });
 </script>
 <config>
 {
-    "navigationBarTitleText": "小程序组件文档"
+    "navigationBarTitleText": "navigatePage"
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"
