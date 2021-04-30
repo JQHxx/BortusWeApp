@@ -1,4 +1,4 @@
-@import "./common/lib/weui.less";
+@import "./common/lib/weui.wxss";
 
 /* reset */
 page {

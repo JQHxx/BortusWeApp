@@ -13,7 +13,7 @@
     ></set-tab-bar>
     <div wx:else class="index">
       <div class="index-hd">
-        <image class="index-logo" src="resources/kind/logo.png"></image>
+        <image class="index-logo" src="../../resources/images/logo.png"></image>
         <div class="index-desc">
           以下将演示小程序接口能力，具体属性参数详见
           <navigator url="../component/doc-web-div" class="weui-agree__link"
@@ -461,7 +461,7 @@ wepy.page({
 {
     "navigationBarTitleText": "小程序接口能力展示",
     "usingComponents": {
-      "set-tab-bar": "components/set-tab-bar"
+      "set-tab-bar": "../../components/set-tab-bar"
     }
 }
 </config>

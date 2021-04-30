@@ -17,7 +17,7 @@
 </style>
 <template>
 <div class="container">
-  <head title="div"/>
+  <head title="view"/>
   <div class="page-body">
     <div class="page-section">
       <div class="page-section-title">
@@ -60,7 +60,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "view"
+    "navigationBarTitleText": "view",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

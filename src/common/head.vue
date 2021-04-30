@@ -1,3 +1,6 @@
+<style lang="wxss">
+@import "../app.wxss";
+</style>
 <template>
   <div class="page-head">
     <div class="page-head-title">{{title}}</div>
@@ -10,5 +13,8 @@
 import wepy from '@wepy/core';
 
 wepy.component({
+  props: {
+    title: String
+  }
 });
 </script>

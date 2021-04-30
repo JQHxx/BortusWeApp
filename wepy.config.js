@@ -6,12 +6,11 @@ module.exports = {
   wpyExt: '.vue',
   eslint: true,
   cliLogs: !prod,
-  static: ['static'],
+  static: ['src/resources','src/demo.theme.json'],
   build: {
   },
   resolve: {
     alias: {
-      counter: path.join(__dirname, 'src/components/counter'),
       '@': path.join(__dirname, 'src')
     },
     aliasFields: ['wepy', 'weapp'],

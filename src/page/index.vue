@@ -1,5 +1,6 @@
-<style lang="less" src="../common/index.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../common/index.wxss";
+
 .weui-agree__link {
   display: inline;
   color: var(--weui-LINK);
@@ -8,10 +9,10 @@
 <template>
   <div class="index">
     <div class="index-hd">
-      <image class="index-logo" src="resources/kind/logo.png"></image>
+      <image class="index-logo" src="../resources/images/logo.png"></image>
       <div class="index-desc">
         以下将展示小程序官方组件能力，组件样式仅供参考，开发者可根据自身需求自定义组件样式，具体属性参数详见
-        <navigator url="pages/doc-web-view/doc-web-view" class="weui-agree__link">小程序开发文档</navigator>
+        <navigator url="component/doc-web-view" class="weui-agree__link">小程序开发文档</navigator>
         </div>
     </div>
     <div class="index-bd">
@@ -20,13 +21,13 @@
           <div class="kind-list-item">
             <div v-bind:id="item.id" class="kind-list-item-hd" :class="{'kind-list-item-hd-show': item.open}" @tap="kindToggle">
               <div class="kind-list-text">{{ item.name }}</div>
-              <image v-if="theme === 'dark'" class="kind-list-img" src="resources/kind/{{item.id}}_dark.png"></image>
-              <image v-else class="kind-list-img" src="resources/kind/{{item.id}}.png"></image>
+              <image v-if="theme === 'dark'" class="kind-list-img" src="../resources/images/{{item.id}}_dark.png"></image>
+              <image v-else class="kind-list-img" src="../resources/images/{{item.id}}.png"></image>
             </div>
-            <div class="kind-list-item-bd" :class="{'kind-list-item-bd-show': tem.open}">
+            <div class="kind-list-item-bd" :class="{'kind-list-item-bd-show': item.open}">
               <div class="navigator-box" :class="{'navigator-box-show': item.open}">
-                <block v-for="(page,index) in pages" v-bind:key="index">
-                  <navigator url="component/{{page}}/{{page}}" class="navigator">
+                <block v-for="(page,index) in item.pages" v-bind:key="index">
+                  <navigator url="component/{{page}}" class="navigator">
                     <div class="navigator-text">{{ page }}</div>
                     <div class="navigator-arrow"></div>
                   </navigator>
