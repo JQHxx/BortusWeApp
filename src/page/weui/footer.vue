@@ -1,7 +1,43 @@
+<style lang="less" src="../../common/lib/common.less"></style>
 <style lang="less">
+.weui-footer{
+    margin-bottom: 50px;
+}
+.weui-footer_fixed-bottom{
+    margin-bottom: 0;
+}
 </style>
 <template>
-<web-view src="https://developers.weixin.qq.com/miniprogram/introduction/"></web-view>
+<view class="page" v-bind:data-weui-theme="theme">
+    <view class="page__hd">
+        <view class="page__title">Footer</view>
+        <view class="page__desc">页脚</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="weui-footer">
+            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+        </view>
+        <view class="weui-footer">
+            <view class="weui-footer__links">
+                <navigator url="" class="weui-footer__link">底部链接</navigator>
+            </view>
+            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+        </view>
+        <view class="weui-footer">
+            <view class="weui-footer__links">
+                <navigator url="" class="weui-footer__link">底部链接</navigator>
+                <navigator url="" class="weui-footer__link">底部链接</navigator>
+            </view>
+            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+        </view>
+        <view class="weui-footer weui-footer_fixed-bottom">
+            <view class="weui-footer__links">
+                <navigator url="" class="weui-footer__link">WeUI首页</navigator>
+            </view>
+            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+        </view>
+    </view>
+</view>
 </template>
 
 <script lang="typescript">
@@ -10,18 +46,14 @@ import wepy from '@wepy/core';
 wepy.page({
   onShareAppMessage() {
     return {
-      title: 'webview',
-      path: 'page/component/web-view'
+      title: 'footer',
+      path: 'page/weui/footer'
     }
   }
 });
 </script>
 <config>
 {
-    "navigationBarTitleText": "webview"
-    "usingComponents": {
-        "head": "../../common/head",
-        "foot": "../../common/foot"
-    }
+    "navigationBarTitleText": "footer"
 }
 </config>

@@ -13,13 +13,41 @@ declare namespace weui {
     }
 
     export interface DialogButtonTap {
-        index: number,
-        item: DialogButton
+        detail: {
+            index: number,
+            item: DialogButton
+        }
     }
 
     export interface EmojiInsertEmoji {
         detail: {
             emotionName: string
+        }
+    }
+
+    export interface CheckboxGroupChange<V> {
+        detail: {
+            value: V
+        }
+    }
+
+    export interface GalleryChange {
+        detail: {
+            current: number
+        }
+    }
+
+    export interface GalleryDelete {
+        detail: {
+            url: string
+            index: number
+        }
+    }
+
+    export interface SlideViewButtonTap {
+        detail: {
+            index: number
+            data: any
         }
     }
 }
