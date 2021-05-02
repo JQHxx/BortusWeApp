@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../common/lib/weui.wxss';
 
 .page-section {
   margin-bottom: 10px;
@@ -8,7 +8,6 @@
 <template>
   <div class="container">
     <head title="input" />
-
     <div class="page-body">
       <div class="page-section">
         <div class="weui-cells__title">可以自动聚焦的input</div>
@@ -37,7 +36,7 @@
             <input
               class="weui-input"
               maxlength="10"
-              @input="bindKeyInput"
+              @input="bindKeyInput($event.$wx)"
               placeholder="输入同步到div中"
             />
           </div>
@@ -49,7 +48,7 @@
           <div class="weui-cell weui-cell_input">
             <input
               class="weui-input"
-              @input="bindReplaceInput"
+              @input="bindReplaceInput($event.$wx)"
               placeholder="连续的两个1会变成2"
             />
           </div>
@@ -61,7 +60,7 @@
           <div class="weui-cell weui-cell_input">
             <input
               class="weui-input"
-              @input="bindHideKeyboard"
+              @input="bindHideKeyboard($event.$wx)"
               placeholder="输入123自动收起键盘"
             />
           </div>
@@ -71,11 +70,7 @@
         <div class="weui-cells__title">数字输入的input</div>
         <div class="weui-cells weui-cells_after-title">
           <div class="weui-cell weui-cell_input">
-            <input
-              class="weui-input"
-              type="number"
-              placeholder="这是一个数字输入框"
-            />
+            <input class="weui-input" type="number" placeholder="这是一个数字输入框" />
           </div>
         </div>
       </div>
@@ -129,7 +124,6 @@
         </div>
       </div>
     </div>
-
     <foot />
   </div>
 </template>
@@ -141,7 +135,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'input',
-      path: 'page/component/pages/input/input',
+      path: 'page/component/input',
     };
   },
 
@@ -166,13 +160,7 @@ wepy.page({
         pos = left.replace(/11/g, '2').length;
       }
 
-      // 直接返回对象，可以对输入进行过滤处理，同时可以控制光标的位置
-      return {
-        value: value.replace(/11/g, '2'),
-        cursor: pos,
-      };
-      // 或者直接返回字符串,光标在最后边
-      // return value.replace(/11/g,'2'),
+      return value.replace(/11/g, '2')
     },
     bindHideKeyboard(e: WechatMiniprogram.Input) {
       if (e.detail.value === '123') {
@@ -185,7 +173,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "input"
+    "navigationBarTitleText": "input",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

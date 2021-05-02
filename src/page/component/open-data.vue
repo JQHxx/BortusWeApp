@@ -1,5 +1,5 @@
-<style lang="less">
-@import "../../common/lib/weui.less";
+<style lang="wxss">
+@import "../../common/lib/weui.wxss";
 
 .avatar {
   display: flex;
@@ -45,7 +45,6 @@
               </div>
             </div>
           </div>
-
           <div class="weui-cell weui-cell_input">
             <div class="weui-cell__hd">
               <div class="weui-label">性别</div>
@@ -56,7 +55,6 @@
               </div>
             </div>
           </div>
-
           <div class="weui-cell weui-cell_input">
             <div class="weui-cell__hd">
               <div class="weui-label">地区</div>
@@ -69,7 +67,6 @@
               </div>
             </div>
           </div>
-
           <div class="weui-cell weui-cell_input">
             <div class="weui-cell__hd">
               <div class="weui-label">语言</div>
@@ -83,7 +80,6 @@
         </div>
       </div>
     </form>
-
   </div>
   <foot />
 </div>
@@ -93,6 +89,8 @@
 import wepy from '@wepy/core';
 
 wepy.page({
+  data: {
+  },
   onShareAppMessage() {
     return {
       title: 'open-data',
@@ -103,7 +101,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "open-data"
+    "navigationBarTitleText": "open-data",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

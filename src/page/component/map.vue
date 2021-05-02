@@ -11,14 +11,10 @@
 <template>
   <div class="container">
     <head title="map" />
-
     <div class="page-body">
       <div class="page-section-title">
-        当前组件使用了墨渊底图样式，查看<navigator
-          class="navigator"
-          url="/page/component/map-styles"
-          >查看更多</navigator
-        >。
+        当前组件使用了墨渊底图样式，查看
+        <navigator class="navigator" url="map-styles">查看更多</navigator>
       </div>
       <div class="page-section page-section-gap">
         <map
@@ -72,8 +68,7 @@
         </button>
       </div>
     </div>
-
-    <template is="foot" />
+    <foot />
   </div>
 </template>
 
@@ -84,7 +79,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'map',
-      path: 'page/component/pages/map/map',
+      path: 'page/component/map',
     };
   },
 
@@ -102,12 +97,12 @@ wepy.page({
       {
         latitude: 23.099994,
         longitude: 113.34452,
-        iconPath: '/image/location.png',
+        iconPath: '../../resources/images/location.png',
       },
       {
         latitude: 23.099994,
         longitude: 113.30452,
-        iconPath: '/image/location.png',
+        iconPath: '../../resources/images/location.png',
       },
     ],
     polygons: [
@@ -175,7 +170,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "map"
+    "navigationBarTitleText": "map",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

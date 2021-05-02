@@ -9,7 +9,6 @@
 <template>
 <div class="container">
   <head title="navigator"/>
-
   <div class="page-body">
     <div class="btn-area">
       <navigator url="navigate?title=navigate" hover-class="ohter-navigator">
@@ -23,7 +22,6 @@
       </navigator>
     </div>
   </div>
-
   <foot />
 </div>
 </template>
@@ -42,10 +40,10 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "navigator"
+    "navigationBarTitleText": "navigator",
     "usingComponents": {
-        "head": "../../common/head",
-        "foot": "../../common/foot"
+        "head": "../../../common/head",
+        "foot": "../../../common/foot"
     }
 }
 </config>

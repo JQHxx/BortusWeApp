@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="wxss">
 @import '../../common//lib/weui.wxss';
 
 .canvas {
@@ -64,8 +64,11 @@ wepy.page({
         vy: 2,
       };
       this.drawBall();
-      this.interval = setInterval(this.drawBall, 17);
+      this.interval = setInterval(() => {this.drawBall()}, 17);
     }
+  },
+  onUnload() {
+    clearInterval(this.interval);
   },
   methods: {
     drawBall() {
@@ -84,9 +87,7 @@ wepy.page({
       if (p.y <= 7) {
         p.vy = 2;
       }
-
       const context = wx.createCanvasContext('canvas');
-
       function ball(x: number, y: number) {
         context.beginPath();
         context.arc(x, y, 5, 0, Math.PI * 2);
@@ -105,16 +106,13 @@ wepy.page({
       ball(p.x, 300 - p.y);
       ball(300 - p.x, p.y);
       context.draw();
-    },
-    onUnload() {
-      clearInterval(this.interval);
     }
   }
 });
 </script>
 <config>
 {
-    "navigationBarTitleText": "canvas"
+    "navigationBarTitleText": "canvas",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

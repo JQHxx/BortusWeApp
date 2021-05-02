@@ -15,47 +15,31 @@
 <template>
   <div class="container">
     <head title="label" />
-
     <div class="page-body">
       <div class="page-section page-section-gap">
         <div class="page-section-title">表单组件在label内</div>
-        <checkbox-group class="group" @change="checkboxChange">
-          <div
-            class="label-1"
-            v-for="item in checkboxItems"
-            v-bind:key="item.key"
-          >
+        <checkbox-group class="group" @change="checkboxChange($event.$wx)">
+          <div class="label-1" v-for="item in checkboxItems" v-bind:key="item.key">
             <label>
-              <checkbox
-                v-bind:value="item.name"
-                v-bind:checked="item.checked"
-              ></checkbox>
+              <checkbox v-bind:value="item.name" v-bind:checked="item.checked"></checkbox>
               <text class="label-1-text">{{ item.value }}</text>
             </label>
           </div>
         </checkbox-group>
       </div>
-
       <div class="page-section page-section-gap">
         <div class="page-section-title">label用for标识表单组件</div>
-        <radio-group class="group" @change="radioChange">
-          <div
-            class="label-2"
-            v-for="item in radioItems"
-            v-bind:key="item.name"
-          >
+        <radio-group class="group" @change="radioChange($event.$wx)">
+          <div class="label-2" v-for="item in radioItems" v-bind:key="item.name">
             <radio
               v-bind:id="item.name"
               v-bind:value="item.name"
               v-bind:checked="item.checked"
             ></radio>
-            <label class="label-2-text" v-bind:for="item.name"
-              ><text>{{ item.name }}</text></label
-            >
+            <label class="label-2-text" v-bind:for="item.name"><text>{{ item.name }}</text></label>
           </div>
         </radio-group>
       </div>
-
       <div class="page-section page-section-gap">
         <div class="page-section-title">label内有多个时选中第一个</div>
         <label class="label-3">
@@ -67,7 +51,6 @@
         </label>
       </div>
     </div>
-
     <foot />
   </div>
 </template>
@@ -79,7 +62,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'label',
-      path: 'page/component/pages/label/label',
+      path: 'page/component/label',
     };
   },
 
@@ -122,7 +105,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "label"
+    "navigationBarTitleText": "label",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

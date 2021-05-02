@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../common/lib/weui.wxss';
 
 camera {
   height: 250px;
@@ -46,50 +46,36 @@ form {
     <div class="page-body">
       <div class="page-body-wrapper">
         <div style="margin-bottom: 10px">camera 组件</div>
-        <camera
-          flash="off"
-          v-bind:device-position="position"
-          @error="error"
-        ></camera>
+        <camera flash="off" v-bind:device-position="position" @error="error($event.$wx)"></camera>
         <div v-if="showCanvas" class="info-container">
           <div style="margin: 10px 0">使用实时数据帧在 canvas 组件的展示</div>
           <div>帧高度：{{ frameHeight }} 帧宽度：{{ frameWidth }}</div>
-          <canvas
-            id="webgl"
-            type="webgl"
-            canvas-id="canvas"
-            style="width: {{width}}px; height: {{height}}px;"
-          >
-          </canvas>
+          <canvas id="webgl" type="webgl" canvas-id="canvas" style="width: {{width}}px; height: {{height}}px;"></canvas>
         </div>
         <div class="btn-area first-btn">
-          <button @tap="handleShowCanvas" type="primary">
+          <button @tap="handleShowCanvas($event.$wx)" type="primary">
             {{ showCanvas ? '关闭实时帧数据模式' : '开启实时帧数据模式' }}
           </button>
         </div>
         <div class="btn-area">
-          <button type="primary" @tap="togglePosition">切换摄像头</button>
+          <button type="primary" @tap="togglePosition($event.$wx)">切换摄像头</button>
         </div>
         <div class="btn-area">
-          <button type="primary" @tap="takePhoto">拍照</button>
+          <button type="primary" @tap="takePhoto($event.$wx)">拍照</button>
         </div>
         <div class="btn-area">
-          <button type="primary" @tap="startRecord">开始录像</button>
+          <button type="primary" @tap="startRecord($event.$wx)">开始录像</button>
         </div>
         <div class="btn-area">
-          <button type="primary" @tap="stopRecord">结束录像</button>
+          <button type="primary" @tap="stopRecord($event.$wx)">结束录像</button>
         </div>
         <div class="btn-area">
-          <navigator url="/page/component/camera-scan-code" hover-class="none">
+          <navigator url="camera-scan-code" hover-class="none">
             <button type="primary">扫描一维码</button>
           </navigator>
         </div>
         <div class="preview-tips">点击录像或拍照即可在下方预览效果</div>
-        <image
-          v-if="src"
-          mode="widthFix"
-          class="photo"
-          v-bind:src="src"
+        <image v-if="src" mode="widthFix" class="photo" v-bind:src="src"
         ></image>
         <video v-if="videoSrc" class="video" src="{{videoSrc}}"></video>
       </div>

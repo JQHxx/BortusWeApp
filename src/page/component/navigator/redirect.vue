@@ -13,7 +13,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'redirectPage',
-      path: 'page/component/pages/navigator/redirect'
+      path: 'page/component/navigator/index'
     }
   },
 
@@ -24,10 +24,10 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "redirectPage"
+    "navigationBarTitleText": "redirectPage",
     "usingComponents": {
-        "head": "../../common/head",
-        "foot": "../../common/foot"
+        "head": "../../../common/head",
+        "foot": "../../../common/foot"
     }
 }
 </config>

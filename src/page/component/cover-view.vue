@@ -67,7 +67,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "cover-view"
+    "navigationBarTitleText": "cover-view",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

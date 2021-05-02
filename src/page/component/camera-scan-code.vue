@@ -1,5 +1,5 @@
-<style lang="less">
-@import "../../common/lib/weui.less";
+<style lang="wxss">
+@import "../../common/lib/weui.wxss";
 
 camera {
   height: 250px;
@@ -26,9 +26,9 @@ form {
   <head title="camera"/>
   <div class="page-body">
     <div class="page-body-wrapper">
-      <camera mode="scanCode" flash="off" @scancode="scanCode" @error="error" />
+      <camera mode="scanCode" flash="off" @scancode="scanCode" @error="error($event.$wx)" />
       <div class="btn-area">
-        <button type="primary" @tap="navigateBack">
+        <button type="primary" @tap="navigateBack($event.$wx)">
           返回正常模式
         </button>
       </div>
@@ -67,7 +67,7 @@ wepy.page({
     onShareAppMessage() {
     return {
       title: 'camera',
-      path: 'page/component/pages/camera-scan-code/camera-scan-code'
+      path: 'page/component/camera-scan-code'
     }
   },
   data: {

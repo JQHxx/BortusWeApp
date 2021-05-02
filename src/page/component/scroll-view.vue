@@ -2,25 +2,16 @@
 .page-section-spacing {
   margin-top: 30px;
 }
-.scroll-div_H {
+.scroll-view_H {
   white-space: nowrap;
 }
-.scroll-div-item {
+.scroll-view-item {
   height: 150px;
 }
-.scroll-div-item_H {
+.scroll-view-item_H {
   display: inline-block;
   width: 100%;
   height: 150px;
-}
-
-.demo-text-1 {
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #1aad19;
-  color: #ffffff;
-  font-size: 18px;
 }
 .demo-text-1:before {
   content: 'A';
@@ -29,28 +20,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.demo-text-2 {
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #2782d7;
-  color: #ffffff;
-  font-size: 18px;
-}
 .demo-text-2:before {
   content: 'B';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-.demo-text-3 {
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1f1f1;
-  color: #353535;
-  font-size: 18px;
 }
 .demo-text-3:before {
   content: 'C';
@@ -70,19 +45,19 @@
           <text>Vertical Scroll\n纵向滚动</text>
         </div>
         <div class="page-section-spacing">
-          <scroll-div
+          <scroll-view
             scroll-y="true"
             style="height: 150px"
             @scrolltoupper="upper"
             @scrolltolower="lower"
             @scroll="scroll"
-            v-bind:scroll-into-div="todiv"
+            v-bind:scroll-into-view="todView"
             v-bind:scroll-top="scrollTop"
           >
-            <div id="demo1" class="scroll-div-item demo-text-1"></div>
-            <div id="demo2" class="scroll-div-item demo-text-2"></div>
-            <div id="demo3" class="scroll-div-item demo-text-3"></div>
-          </scroll-div>
+            <div id="demo1" class="scroll-view-item demo-text-1"></div>
+            <div id="demo2" class="scroll-view-item demo-text-2"></div>
+            <div id="demo3" class="scroll-view-item demo-text-3"></div>
+          </scroll-view>
         </div>
       </div>
       <div class="page-section">
@@ -90,16 +65,16 @@
           <text>Horizontal Scroll\n横向滚动</text>
         </div>
         <div class="page-section-spacing">
-          <scroll-div
-            class="scroll-div_H"
+          <scroll-view
+            class="scroll-view_H"
             scroll-x="true"
             @scroll="scroll"
             style="width: 100%"
           >
-            <div id="demo1" class="scroll-div-item_H demo-text-1"></div>
-            <div id="demo2" class="scroll-div-item_H demo-text-2"></div>
-            <div id="demo3" class="scroll-div-item_H demo-text-3"></div>
-          </scroll-div>
+            <div id="demo4" class="scroll-view-item_H demo-text-1"></div>
+            <div id="demo5" class="scroll-view-item_H demo-text-2"></div>
+            <div id="demo6" class="scroll-view-item_H demo-text-3"></div>
+          </scroll-view>
         </div>
       </div>
       <div class="page-section">
@@ -107,43 +82,31 @@
           <text>自定义下拉刷新\n自定义：</text>
         </div>
         <div class="page-section-spacing">
-          <scroll-div
+          <scroll-view
             scroll-y
             style="width: 100%; height: 400px"
             v-bind:refresher-enabled="true"
             v-bind:refresher-threshold="80"
             refresher-default-style="none"
             refresher-background="lightgreen"
-            @refresherpulling="refreshOnPulling"
+            @refresherpulling="onPulling"
           >
             <div
               slot="refresher"
               class="refresh-container"
-              style="
-                display: block;
-                width: 100%;
-                height: 80px;
-                background: #ecbdf0;
-                display: flex;
-                align-items: center;
-              "
+              style="display: block; width: 100%; height: 80px; background: #ecbdf0; display: flex; align-items: center;"
             >
               <div
                 class="div1"
-                style="
-                  position: absolute;
-                  color: white;
-                  text-align: center;
-                  width: 100%;
-                "
+                style="position: absolute; color: white; text-align: center; width: 100%;"
               >
                 下拉刷新
               </div>
             </div>
-            <div id="demo1" class="scroll-div-item_H demo-text-1"></div>
-            <div id="demo2" class="scroll-div-item_H demo-text-2"></div>
-            <div id="demo3" class="scroll-div-item_H demo-text-3"></div>
-          </scroll-div>
+            <div id="demo7" class="scroll-view-item_H demo-text-1"></div>
+            <div id="demo8" class="scroll-view-item_H demo-text-2"></div>
+            <div id="demo9" class="scroll-view-item_H demo-text-3"></div>
+          </scroll-view>
         </div>
       </div>
       <div class="page-section">
@@ -151,7 +114,7 @@
           <text>默认：</text>
         </div>
         <div class="page-section-spacing">
-          <scroll-div
+          <scroll-view
             scroll-y
             style="width: 100%; height: 400px"
             v-bind:refresher-enabled="true"
@@ -164,10 +127,10 @@
             @refresherrestore="onRestore"
             @refresherabort="onAbort"
           >
-            <div id="demo1" class="scroll-div-item_H demo-text-1"></div>
-            <div id="demo2" class="scroll-div-item_H demo-text-2"></div>
-            <div id="demo3" class="scroll-div-item_H demo-text-3"></div>
-          </scroll-div>
+            <div id="demo10" class="scroll-view-item_H demo-text-1"></div>
+            <div id="demo11" class="scroll-view-item_H demo-text-2"></div>
+            <div id="demo12" class="scroll-view-item_H demo-text-3"></div>
+          </scroll-view>
         </div>
       </div>
       <div class="page-section">
@@ -175,29 +138,29 @@
           <text>滚动驱动动画</text>
         </div>
         <div class="page-section-spacing">
-          <scroll-div
+          <scroll-view
             id="scroll-div_D"
             scroll-y="true"
             style="height: 150px"
             @scrolltoupper="upper"
             @scrolltolower="lower"
             @scroll="scroll"
-            v-bind:scroll-into-div="todiv"
+            v-bind:scroll-into-view="toView"
             v-bind:scroll-top="scrollTop"
           >
             <div
-              class="scroll-div-item_H demo-text-1"
+              class="scroll-view-item_H demo-text-1"
               id="scroll-sample-object1"
             ></div>
             <div
-              class="scroll-div-item_H demo-text-2"
+              class="scroll-view-item_H demo-text-2"
               id="scroll-sample-object2"
             ></div>
             <div
-              class="scroll-div-item_H demo-text-3"
+              class="scroll-view-item_H demo-text-3"
               id="scroll-sample-object3"
             ></div>
-          </scroll-div>
+          </scroll-view>
         </div>
       </div>
     </div>
@@ -208,11 +171,14 @@
 <script lang="typescript">
 import wepy from '@wepy/core';
 
-const order = ['demo1', 'demo2', 'demo3'];
-
 wepy.page({
+  onReady() {
+    setTimeout(() => {
+      this.triggered = true;
+    }, 1000);
+  },
   onLoad() {
-    this.animate(
+    this.$wx.animate(
       '#scroll-sample-object1',
       [
         {
@@ -237,7 +203,7 @@ wepy.page({
       }
     );
 
-    this.animate(
+    this.$wx.animate(
       '#scroll-sample-object2',
       [
         {
@@ -262,7 +228,7 @@ wepy.page({
       }
     );
 
-    this.animate(
+    this.$wx.animate(
       '#scroll-sample-object3',
       [
         {
@@ -283,7 +249,12 @@ wepy.page({
       }
     );
   },
-
+  onShareAppMessage() {
+    return {
+      title: 'scroll-view',
+      path: 'page/component/scroll-view',
+    };
+  },
   data: {
     toView: 'green',
     triggered: false,
@@ -298,6 +269,7 @@ wepy.page({
     onRefresh() {
       if (this.freshing) return;
       this.freshing = true;
+      this.triggered = true;
       setTimeout(() => {
         this.triggered = false;
         this.freshing = false;
@@ -309,38 +281,17 @@ wepy.page({
     onAbort(e: WechatMiniprogram.ScrollViewRefresherAbort) {
       console.log('onAbort', e);
     },
-    onShareAppMessage() {
-      return {
-        title: 'scroll-view',
-        path: 'page/component/pages/scroll-view/scroll-view',
-      };
-    },
     upper(e: WechatMiniprogram.ScrollViewScrollToUpper) {
       console.log(e);
     },
     lower(e: WechatMiniprogram.ScrollViewScrollToLower) {
       console.log(e);
     },
-
     scroll(e: WechatMiniprogram.ScrollViewScroll) {
       console.log(e);
     },
-
     scrollToTop() {
       this.scrollTop = 0;
-    },
-
-    tap() {
-      for (let i = 0; i < order.length; ++i) {
-        if (order[i] === this.toView) {
-          this.toView = order[i + 1];
-          this.scrollTop = (i + 1) * 200;
-          break;
-        }
-      }
-    },
-    tapMove() {
-      this.scrollTop = this.scrollTop + 10;
     },
   },
 });
@@ -348,7 +299,7 @@ wepy.page({
 <config>
 {
     "navigationBarTitleText": "scroll-view",
-    "pageOrientation": "auto"
+    "pageOrientation": "auto",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

@@ -21,10 +21,10 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "video"
+    "navigationBarTitleText": "video",
     "usingComponents": {
-        "head": "../../common/head",
-        "foot": "../../common/foot"
+        "head": "../../../common/head",
+        "foot": "../../../common/foot"
     }
 }
 </config>

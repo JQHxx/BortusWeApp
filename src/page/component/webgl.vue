@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../common/lib/weui.wxss';
 
 .canvas {
   width: 305px;
@@ -172,7 +172,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "webgl"
+    "navigationBarTitleText": "webgl",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

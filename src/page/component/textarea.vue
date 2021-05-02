@@ -14,7 +14,7 @@ textarea {
       <div class="page-section">
         <div class="page-section-title">输入区域高度自适应，不会出现滚动条</div>
         <div class="textarea-wrp">
-          <textarea @blur="bindTextAreaBlur" auto-height />
+          <textarea @blur="bindTextAreaBlur($event.$wx)" auto-height />
         </div>
       </div>
       <div class="page-section">
@@ -35,24 +35,22 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'textarea',
-      path: 'page/component/pages/textarea/textarea',
+      path: 'page/component/textarea',
     };
   },
-
   data: {
     focus: false,
   },
-
   methods: {
     bindTextAreaBlur(e: WechatMiniprogram.TextareaBlur) {
       console.log(e.detail.value);
-    },
-  },
+    }
+  }
 });
 </script>
 <config>
 {
-    "navigationBarTitleText": "textarea"
+    "navigationBarTitleText": "textarea",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

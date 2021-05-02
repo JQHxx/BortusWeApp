@@ -81,12 +81,12 @@ wepy.page({
         id: 'nav',
         name: '导航',
         open: false,
-        pages: ['navigator']
+        pages: ['navigator/index']
       }, {
         id: 'media',
         name: '媒体组件',
         open: false,
-        pages: ['image', 'video', 'camera', 'live-pusher', 'live-player']
+        pages: ['image', 'video/index', 'camera', 'live-pusher', 'live-player']
       }, {
         id: 'map',
         name: '地图',
@@ -96,7 +96,7 @@ wepy.page({
         id: 'canvas',
         name: '画布',
         open: false,
-        pages: ['canvas', 'canvas-2d', 'webgl']
+        pages: ['canvas', 'webgl']
       }, {
         id: 'open',
         name: '开放能力',

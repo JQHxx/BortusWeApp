@@ -13,7 +13,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'navigatePage',
-      path: 'page/component/pages/navigator/navigate'
+      path: 'page/component/navigator'
     }
   },
 
@@ -24,10 +24,10 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "navigatePage"
+    "navigationBarTitleText": "navigatePage",
     "usingComponents": {
-        "head": "../../common/head",
-        "foot": "../../common/foot"
+        "head": "../../../common/head",
+        "foot": "../../../common/foot"
     }
 }
 </config>

@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/index.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/index.wxss";
 .weui-agree__link {
   display: inline;
   color: var(--weui-LINK);

@@ -12,7 +12,6 @@
 <template>
 <div class="container">
   <head title="map"/>
-
   <div class="page-body">
     <div class="page-section page-section-gap">
       <div class="page-section-title">经典</div>
@@ -38,9 +37,7 @@
         <image class="image" src="../../resources/images/custom_map_template_4.png"/>
       </div>
     </div>
-    
   </div>
-
   <foot />
 </div>
 </template>
@@ -59,7 +56,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "map底图样式"
+    "navigationBarTitleText": "map底图样式",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

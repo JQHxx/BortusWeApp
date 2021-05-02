@@ -16,7 +16,7 @@
     <div class="page-section page-section-gap">
       <div class="page-section-title">Local Image</div>
       <div class="page-section-ctn">
-        <image class="image" src="../../resources/pic/1.jpg"/>
+        <image class="image" src="../../resources/images/1.jpg"/>
       </div>
     </div>
     <div class="page-section page-section-gap">
@@ -43,7 +43,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'image',
-      path: 'page/component/pages/image/image'
+      path: 'page/component/image'
     }
   },
   onLoad() {
@@ -66,7 +66,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "image"
+    "navigationBarTitleText": "image",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

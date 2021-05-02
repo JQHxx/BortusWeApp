@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../common/lib/weui.wxss';
 
 label {
   display: inline-block;
@@ -17,14 +17,12 @@ form {
 <template>
   <div class="container">
     <head title="form" />
-
     <div class="page-body">
-      <form @submit="formSubmit" @reset="formReset">
+      <form @submit="formSubmit($event.$wx)" @reset="formReset($event.$wx)">
         <div class="page-section page-section-gap">
           <div class="page-section-title">switch</div>
           <switch name="switch" />
         </div>
-
         <div class="page-section page-section-gap">
           <div class="page-section-title">radio</div>
           <radio-group name="radio">
@@ -79,7 +77,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'form',
-      path: 'page/component/pages/form/form',
+      path: 'page/component/form',
     };
   },
   methods: {
@@ -94,7 +92,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "form"
+    "navigationBarTitleText": "form",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

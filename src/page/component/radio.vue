@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../common/lib/weui.wxss';
 
 .radio {
   margin-right: 10px;
@@ -8,23 +8,17 @@
 <template>
   <div class="container">
     <head title="radio" />
-
     <div class="page-body">
       <div class="page-section page-section-gap">
         <div class="page-section-title">默认样式</div>
         <label class="radio"> <radio value="r1" checked="true" />选中 </label>
         <label class="radio"> <radio value="r2" />未选中 </label>
       </div>
-
       <div class="page-section">
         <div class="page-section-title">推荐展示样式</div>
         <div class="weui-cells weui-cells_after-title">
-          <radio-group @change="radioChange">
-            <label
-              class="weui-cell weui-check__label"
-              v-for="item in items"
-              v-bind:key="item.value"
-            >
+          <radio-group @change="radioChange($event.$wx)">
+            <label class="weui-cell weui-check__label" v-for="item in items" v-bind:key="item.value">
               <div class="weui-cell__hd">
                 <radio v-bind:value="item.value" checked="true" />
               </div>
@@ -34,7 +28,6 @@
         </div>
       </div>
     </div>
-
     <foot />
   </div>
 </template>
@@ -75,7 +68,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "radio"
+    "navigationBarTitleText": "radio",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

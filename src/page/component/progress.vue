@@ -14,7 +14,6 @@ progress{
 <template>
 <div class="container">
   <head title="progress"/>
-
   <div class="page-body">
     <div class="page-section page-section-gap">
       <div class="progress-box">
@@ -50,7 +49,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "progress"
+    "navigationBarTitleText": "progress",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

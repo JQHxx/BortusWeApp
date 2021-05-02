@@ -35,7 +35,6 @@
 <template>
 <div class="container">
   <head title="icon"/>
-
   <div class="icon-box">
     <icon class="icon-box-img" type="success" size="93"></icon>
     <div class="icon-box-ctn">
@@ -161,7 +160,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "icon"
+    "navigationBarTitleText": "icon",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

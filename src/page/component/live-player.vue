@@ -29,8 +29,8 @@ input {
           v-bind:src="videoSrc"
           mode="RTC"
           autoplay
-          @statechange="handleLivePlayerStateChange"
-          @error="handleLivePlayerError"
+          @statechange="handleLivePlayerStateChange($event.$wx)"
+          @error="handleLivePlayerError($event.$wx)"
         ></live-player>
       </div>
       <div class="page-section">
@@ -40,7 +40,7 @@ input {
           name="input"
           placeholder="视频播放链接"
           v-model="videoSrc"
-          @input="handleVideoSrcInput"
+          @input="handleVideoSrcInput($event.$wx)"
         />
         <button type="primary" @tap="handleScanQRCode">扫码</button>
       </div>
@@ -155,7 +155,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "live-player"
+    "navigationBarTitleText": "live-player",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

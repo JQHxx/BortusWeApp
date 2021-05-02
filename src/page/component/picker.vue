@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../common/lib/weui.wxss';
 
 .picker {
   padding: 10px 13px;
@@ -9,7 +9,6 @@
 <template>
   <div class="container">
     <head title="picker" />
-
     <div class="page-body">
       <div class="page-section">
         <div class="weui-cells__title">地区选择器</div>
@@ -19,11 +18,7 @@
               <div class="weui-label">当前选择</div>
             </div>
             <div class="weui-cell__bd">
-              <picker
-                @change="bindPickerChange"
-                v-model="index"
-                v-bind:range="array"
-              >
+              <picker @change="bindPickerChange($event.$wx)" v-model="index" v-bind:range="array">
                 <div class="weui-input">{{ array[index] }}</div>
               </picker>
             </div>
@@ -37,13 +32,7 @@
               <div class="weui-label">当前选择</div>
             </div>
             <div class="weui-cell__bd">
-              <picker
-                mode="time"
-                v-model="time"
-                start="09:01"
-                end="21:01"
-                @change="bindTimeChange"
-              >
+              <picker mode="time" v-model="time" start="09:01" end="21:01" @change="bindTimeChange($event.$wx)">
                 <div class="weui-input">{{ time }}</div>
               </picker>
             </div>
@@ -57,13 +46,7 @@
               <div class="weui-label">当前选择</div>
             </div>
             <div class="weui-cell__bd">
-              <picker
-                mode="date"
-                v-model="date"
-                start="2015-09-01"
-                end="2017-09-01"
-                @change="bindDateChange"
-              >
+              <picker mode="date" v-model="date" start="2015-09-01" end="2017-09-01" @change="bindDateChange($event.$wx)">
                 <div class="weui-input">{{ date }}</div>
               </picker>
             </div>
@@ -71,8 +54,7 @@
         </div>
       </div>
     </div>
-
-    <template is="foot" />
+    <foot />
   </div>
 </template>
 
@@ -83,7 +65,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'picker',
-      path: 'page/component/pages/picker/picker',
+      path: 'page/component/picker',
     };
   },
 
@@ -112,7 +94,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "picker"
+    "navigationBarTitleText": "picker",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

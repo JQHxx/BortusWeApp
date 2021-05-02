@@ -37,11 +37,11 @@ button{
         <button class="mini-btn" type="default" size="mini">按钮</button>
         <button class="mini-btn" type="warn" size="mini">按钮</button>
       </div>
-      <button type="primary" open-type="contact" @contact="handleContact" v-bind:show-message-card="true" send-message-title="临时会话">打开客服会话</button>
+      <button type="primary" open-type="contact" @contact="handleContact($event.$wx)" v-bind:show-message-card="true" send-message-title="临时会话">打开客服会话</button>
       <button type="primary" open-type="share">触发用户转发</button>
-      <button type="primary" open-type="getPhoneNumber" @getphonenumber="handleGetPhoneNumber">获取用户手机号</button>
-      <button type="primary" open-type="getUserInfo" lang="zh_CN" @getuserinfo="handleGetUserInfo">获取用户信息</button>
-      <button type="primary" open-type="openSetting" @opensetting="handleOpenSetting">打开设置授权页</button>
+      <button type="primary" open-type="getPhoneNumber" @getphonenumber="handleGetPhoneNumber($event.$wx)">获取用户手机号</button>
+      <button type="primary" open-type="getUserInfo" lang="zh_CN" @getuserinfo="handleGetUserInfo($event.$wx)">获取用户信息</button>
+      <button type="primary" open-type="openSetting" @opensetting="handleOpenSetting($event.$wx)">打开设置授权页</button>
       <button type="primary" open-type="feedback">打开意见反馈</button>
     </div>
   </div>

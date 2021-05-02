@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../common/lib/weui.wxss';
 
 button {
   margin-bottom: 15px;
@@ -31,7 +31,6 @@ button:last-child {
 <template>
   <div class="container">
     <head title="swiper" />
-
     <div class="page-body">
       <div class="page-section page-section-spacing swiper">
         <swiper
@@ -66,14 +65,13 @@ button:last-child {
           </div>
         </div>
       </div>
-
       <div class="page-section page-section-spacing">
         <div class="page-section-title">
           <text>幻灯片切换时长(ms)</text>
           <text class="info">{{ duration }}</text>
         </div>
         <slider
-          @change="durationChange"
+          @change="durationChange($event.$wx)"
           v-model="duration"
           min="500"
           max="2000"
@@ -83,7 +81,7 @@ button:last-child {
           <text class="info">{{ interval }}</text>
         </div>
         <slider
-          @change="intervalChange"
+          @change="intervalChange($event.$wx)"
           v-model="interval"
           min="2000"
           max="10000"
@@ -101,7 +99,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'swiper',
-      path: 'page/component/pages/swiper/swiper',
+      path: 'page/component/swiper',
     };
   },
 
@@ -135,7 +133,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "swiper"
+    "navigationBarTitleText": "swiper",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

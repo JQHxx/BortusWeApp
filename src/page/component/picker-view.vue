@@ -23,50 +23,32 @@
       <div class="selected-date">
         {{ year }}年{{ month }}月{{ day }}日{{ isDaytime ? '白天' : '夜晚' }}
       </div>
-      <picker-div
-        indicator-style="height: 50px;"
-        style="width: 100%; height: 300px"
-        v-model="value"
-        @change="bindChange"
-      >
-        <picker-div-column>
-          <div
-            v-for="item in years"
-            v-bind:key="item"
-            style="line-height: 50px; text-align: center"
-          >
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px" v-model="value" @change="bindChange($event.$wx)">
+        <picker-view-column>
+          <div v-for="item in years" v-bind:key="item" style="line-height: 50px; text-align: center">
             {{ item }}年
           </div>
-        </picker-div-column>
-        <picker-div-column>
-          <div
-            v-for="item in months"
-            v-bind:key="item"
-            style="line-height: 50px; text-align: center"
-          >
+        </picker-view-column>
+        <picker-view-column>
+          <div v-for="item in months" v-bind:key="item" style="line-height: 50px; text-align: center">
             {{ item }}月
           </div>
-        </picker-div-column>
-        <picker-div-column>
-          <div
-            v-for="item in days"
-            v-bind:key="item"
-            style="line-height: 50px; text-align: center"
-          >
+        </picker-view-column>
+        <picker-view-column>
+          <div v-for="item in days" v-bind:key="item" style="line-height: 50px; text-align: center">
             {{ item }}日
           </div>
-        </picker-div-column>
-        <picker-div-column>
+        </picker-view-column>
+        <picker-view-column>
           <div class="icon-container">
-            <image class="picker-icon" src="../../resources/kind/daytime.png" />
+            <image class="picker-icon" src="../../resources/images/daytime.png" />
           </div>
           <div class="icon-container">
-            <image class="picker-icon" src="../../resources/kind/night.png" />
+            <image class="picker-icon" src="../../resources/images/night.png" />
           </div>
-        </picker-div-column>
-      </picker-div>
+        </picker-view-column>
+      </picker-view>
     </div>
-
     <foot />
   </div>
 </template>
@@ -123,7 +105,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "picker-view"
+    "navigationBarTitleText": "picker-view",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

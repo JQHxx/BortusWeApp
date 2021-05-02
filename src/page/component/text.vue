@@ -19,7 +19,6 @@ button {
 <template>
   <div class="container">
     <head title="text" />
-
     <div class="page-body">
       <div class="page-section page-section-spacing">
         <div class="text-box" scroll-y="true" v-bind:scroll-top="scrollTop">
@@ -29,7 +28,6 @@ button {
         <button v-bind:disabled="!canRemove" @tap="remove">remove line</button>
       </div>
     </div>
-
     <foot />
   </div>
 </template>
@@ -57,7 +55,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'text',
-      path: 'page/component/pages/text/text',
+      path: 'page/component/text',
     };
   },
 
@@ -96,7 +94,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "text"
+    "navigationBarTitleText": "text",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

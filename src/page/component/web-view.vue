@@ -18,7 +18,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "webview"
+    "navigationBarTitleText": "webview",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

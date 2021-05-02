@@ -135,7 +135,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "rich-text"
+    "navigationBarTitleText": "rich-text",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

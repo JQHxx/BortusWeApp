@@ -1,5 +1,5 @@
 <style lang="less">
-movable-div {
+movable-view {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,16 +47,13 @@ movable-area {
 <template>
   <div class="container">
     <head title="movable-div" />
-
     <div class="page-body">
       <div class="page-section">
         <div class="page-section-title first">
-          movable-div区域小于movable-area
+          movable-view区域小于movable-area
         </div>
         <movable-area>
-          <movable-div v-bind:x="x" v-bind:y="y" direction="all"
-            >text</movable-div
-          >
+          <movable-view v-bind:x="x" v-bind:y="y" direction="all">text</movable-view>
         </movable-area>
       </div>
       <div class="btn-area">
@@ -64,55 +61,48 @@ movable-area {
           点击移动到 (30px, 30px)
         </button>
       </div>
-
       <div class="page-section">
-        <div class="page-section-title">movable-div区域大于movable-area</div>
+        <div class="page-section-title">movable-view区域大于movable-area</div>
         <movable-area>
-          <movable-div class="max" direction="all">text</movable-div>
+          <movable-view class="max" direction="all">text</movable-view>
         </movable-area>
       </div>
-
       <div class="page-section">
         <div class="page-section-title">只可以横向移动</div>
         <movable-area>
-          <movable-div direction="horizontal">text</movable-div>
+          <movable-view direction="horizontal">text</movable-view>
         </movable-area>
       </div>
-
       <div class="page-section">
         <div class="page-section-title">只可以纵向移动</div>
         <movable-area>
-          <movable-div direction="vertical">text</movable-div>
+          <movable-view direction="vertical">text</movable-view>
         </movable-area>
       </div>
-
       <div class="page-section">
         <div class="page-section-title">可超出边界</div>
         <movable-area>
-          <movable-div direction="all" out-of-bounds>text</movable-div>
+          <movable-view direction="all" out-of-bounds>text</movable-view>
         </movable-area>
       </div>
-
       <div class="page-section">
         <div class="page-section-title">带有惯性</div>
         <movable-area>
-          <movable-div direction="all" inertia>text</movable-div>
+          <movable-view direction="all" inertia>text</movable-view>
         </movable-area>
       </div>
-
       <div class="page-section">
         <div class="page-section-title">可放缩</div>
         <movable-area scale-area>
-          <movable-div
+          <movable-view
             direction="all"
-            @change="onChange"
-            @scale="onScale"
+            @change="onChange($event.$wx)"
+            @scale="onScale($event.$wx)"
             scale
             scale-min="0.5"
             scale-max="4"
             v-bind:scale-value="scale"
-            >text</movable-div
-          >
+            >text</movable-view>
         </movable-area>
       </div>
       <div class="btn-area">
@@ -132,7 +122,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'movable-view',
-      path: 'page/component/pages/movable-view/movable-view',
+      path: 'page/component/movable-view',
     };
   },
 
@@ -164,7 +154,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "movable-view"
+    "navigationBarTitleText": "movable-view",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

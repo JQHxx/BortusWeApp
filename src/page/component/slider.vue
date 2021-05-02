@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="wxss">
 slider {
   margin: 0;
 }
@@ -6,30 +6,26 @@ slider {
 <template>
 <div class="container">
   <head title="slider"/>
-
   <div class="page-body">
     <div class="page-section page-section-gap">
       <div class="page-section-title">设置step</div>
       <div class="body-div">
-        <slider value="60" @change="slider2change" step="5"/>
+        <slider value="60" @change="slider2change($event.$wx)" step="5"/>
       </div>
     </div>
-
     <div class="page-section page-section-gap">
       <div class="page-section-title">显示当前value</div>
       <div class="body-div">
-        <slider value="50" @change="slider3change" show-value/>
+        <slider value="50" @change="slider3change($event.$wx)" show-value/>
       </div>
     </div>
-
     <div class="page-section page-section-gap">
       <div class="page-section-title">设置最小/最大值</div>
       <div class="body-div">
-        <slider value="100" @change="slider4change" min="50" max="200" show-value/>
+        <slider value="100" @change="slider4change($event.$wx)" min="50" max="200" show-value/>
       </div>
     </div>
   </div>
-
   <foot />
 </div>
 </template>
@@ -59,7 +55,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "slider"
+    "navigationBarTitleText": "slider",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

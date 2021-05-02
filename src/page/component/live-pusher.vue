@@ -28,8 +28,8 @@ input {
           v-bind:url="videoSrc"
           mode="RTC"
           autopush
-          @statechange="handleLivePusherStateChange"
-          @error="handleLivePusherError"
+          @statechange="handleLivePusherStateChange($event.$wx)"
+          @error="handleLivePusherError($event.$wx)"
         ></live-pusher>
       </div>
       <div class="page-section">
@@ -38,11 +38,10 @@ input {
           name="input"
           placeholder="视频推送链接"
           v-model="videoSrc"
-          @input="handleVideoSrcInput"
+          @input="handleVideoSrcInput($event.$wx)"
         />
-        <button type="primary" @tap="handleScanQRCode">扫码</button>
+        <button type="primary" @tap="handleScanQRCode($event.$wx)">扫码</button>
       </div>
-
       <div class="page-section">
         <button @tap="handleStart" class="page-body-button" type="primary">
           开始
@@ -56,16 +55,11 @@ input {
         <button @tap="handleResume" class="page-body-button" type="primary">
           恢复
         </button>
-        <button
-          @tap="handleSwitchCamera"
-          class="page-body-button"
-          type="primary"
-        >
+        <button @tap="handleSwitchCamera" class="page-body-button" type="primary">
           切换摄像头
         </button>
       </div>
     </div>
-
     <foot />
   </div>
 </template>
@@ -77,7 +71,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'live-pusher',
-      path: 'page/component/pages/live-pusher/live-pusher',
+      path: 'page/component/live-pusher',
     };
   },
   data: {
@@ -159,7 +153,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "live-pusher"
+    "navigationBarTitleText": "live-pusher",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

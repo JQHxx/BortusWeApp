@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/weui.less';
+<style lang="wxss">
+@import '../../../common/lib/weui.wxss';
 video {
   width: 345px;
 }
@@ -26,13 +26,12 @@ video {
 <template>
   <div class="container">
     <head title="video" />
-
     <div class="page-body">
       <div class="page-section tc">
         <video
           id="myVideo"
           src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
-          @error="videoErrorCallback"
+          @error="videoErrorCallback($event.$wx)"
           v-bind:danmu-list="danmuList"
           enable-danmu
           danmu-btn
@@ -42,8 +41,8 @@ video {
           v-bind:show-play-btn="true"
           controls
           picture-in-picture-mode="{{['push', 'pop']}}"
-          bindenterpictureinpicture="bindVideoEnterPictureInPicture"
-          bindleavepictureinpicture="bindVideoLeavePictureInPicture"
+          @enterpictureinpicture="bindVideoEnterPictureInPicture"
+          @leavepictureinpicture="bindVideoLeavePictureInPicture"
           v-bind:enable-auto-rotation="enableAutoRotation"
         ></video>
         <div class="auto-rotate-container">
@@ -51,7 +50,7 @@ video {
           <div>
             <switch
               model:checked="{{ enableAutoRotation }}"
-              @change="handleSwitchChange"
+              @change="handleSwitchChange($event.$wx)"
             />
           </div>
         </div>
@@ -61,35 +60,18 @@ video {
               <div class="weui-label">弹幕内容</div>
             </div>
             <div class="weui-cell__bd">
-              <input
-                @blur="bindInputBlur"
-                class="weui-input"
-                type="text"
-                placeholder="在此处输入弹幕内容"
-              />
+              <input @blur="bindInputBlur($event.$wx)" class="weui-input" type="text" placeholder="在此处输入弹幕内容" />
             </div>
           </div>
         </div>
         <div class="btn-area">
-          <button
-            @tap="bindSendDanmu"
-            class="page-body-button"
-            type="primary"
-            formType="submit"
-          >
+          <button @tap="bindSendDanmu($event.$wx)" class="page-body-button" type="primary" formType="submit">
             发送弹幕
           </button>
         </div>
         <div class="btn-area">
-          <navigator
-            url="picture-in-picture"
-            hover-class="other-navigator-hover"
-          >
-            <button
-              type="primary"
-              class="page-body-button"
-              @tap="bindPlayVideo"
-            >
+          <navigator url="picture-in-picture" hover-class="other-navigator-hover">
+            <button type="primary" class="page-body-button" @tap="bindPlayVideo($event.$wx)">
               小窗模式
             </button>
           </navigator>
@@ -120,13 +102,10 @@ wepy.page({
       path: 'page/component/video/index',
     };
   },
-
   onReady() {
     this.videoContext = wx.createVideoContext('myVideo');
   },
-
   onHide() {},
-
   data: {
     enableAutoRotation: true,
     src: '',
@@ -177,10 +156,10 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "video"
+    "navigationBarTitleText": "video",
     "usingComponents": {
-        "head": "../../common/head",
-        "foot": "../../common/foot"
+        "head": "../../../common/head",
+        "foot": "../../../common/foot"
     }
 }
 </config>

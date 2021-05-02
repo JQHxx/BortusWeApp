@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="wxss">
 @import '../../common/lib/weui.wxss';
 
 .checkbox {
@@ -19,14 +19,13 @@
       <div class="page-section">
         <div class="page-section-title">推荐展示样式</div>
         <div class="weui-cells weui-cells_after-title">
-          <checkbox-group @change="checkboxChange">
+          <checkbox-group @change="checkboxChange($event.$wx)">
             <label
               class="weui-cell weui-check__label"
               v-for="item in items"
-              v-bind:key="item.value"
-            >
+              v-bind:key="item.value">
               <div class="weui-cell__hd">
-                <checkbox v-bind:value="item.value" v-model="item.checked" />
+                <checkbox v-bind:value="item.value" v-bind:checked="item.checked" />
               </div>
               <div class="weui-cell__bd">{{ item.name }}</div>
             </label>
@@ -45,7 +44,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'checkbox',
-      path: 'page/component/pages/checkbox/checkbox',
+      path: 'page/component/checkbox',
     };
   },
 
@@ -81,7 +80,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "checkbox"
+    "navigationBarTitleText": "checkbox",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

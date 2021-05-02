@@ -1,5 +1,5 @@
-<style lang="less">
-@import '../../common/lib/iconfont.less';
+<style lang="wxss">
+@import '../../common/lib/iconfont.wxss';
 
 page > view {
   max-width: 100%;
@@ -54,26 +54,12 @@ page > view {
 </style>
 <template>
   <view class="container" style="height:{{editorHeight}}px;">
-    <editor
-      id="editor"
-      class="ql-container"
-      v-bind:placeholder="placeholder"
-      @statuschange="onStatusChange"
-      @ready="onEditorReady"
-    ></editor>
-    <view
-      class="toolbar"
-      @touchend="format"
-      v-bind:hidden="false"
+    <editor id="editor" class="ql-container" v-bind:placeholder="placeholder" @statuschange="onStatusChange($event.$wx)" @ready="onEditorReady($event.$wx)"></editor>
+    <view class="toolbar" @touchend="format($event.$wx)" v-bind:hidden="false"
       style="bottom: {{isIOS ? keyboardHeight : 0}}px; height: {{toolBarHeight}}px; padding-bottom: {{isIOS ? safeHeight : 0}}px"
     >
       <i class="iconfont icon-charutupian" @touchend="insertImage"></i>
-      <i
-        class="iconfont icon-format-header-2"
-        :class="{ 'ql-active': formats.header === 2 }"
-        data-name="header"
-        v-bind:data-value="2"
-      ></i>
+      <i class="iconfont icon-format-header-2" :class="{ 'ql-active': formats.header === 2 }" data-name="header" v-bind:data-value="2"></i>
       <i
         class="iconfont icon-format-header-3"
         :class="{ 'ql-active': formats.header === 3 }"
@@ -263,10 +249,10 @@ wepy.page({
 <config>
 {
   "navigationBarTitleText": "editor",
-  "disableScroll": true
-    "usingComponents": {
-        "head": "../../common/head",
-        "foot": "../../common/foot"
-    }
+  "disableScroll": true,
+  "usingComponents": {
+      "head": "../../common/head",
+      "foot": "../../common/foot"
+  }
 }
 </config>
