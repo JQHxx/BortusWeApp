@@ -1,5 +1,6 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
+
 image {
   margin: 4px 0;
 }
@@ -26,13 +27,13 @@ image {
             <div class="weui-article__p">
               <image
                 class="weui-article__img"
-                src="../images/pic_article.png"
+                src="../../resources/images/pic_article.png"
                 mode="aspectFit"
                 style="height: 180px"
               />
               <image
                 class="weui-article__img"
-                src="../images/pic_article.png"
+                src="../../resources/images/pic_article.png"
                 mode="aspectFit"
                 style="height: 180px"
               />

@@ -1,27 +1,29 @@
-<style lang="less" src="../../common/lib/common.less"></style>
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
+</style>
 <template>
-<view class="page" data-weui-theme="{{theme}}">
-    <view class="page__hd">
-        <view class="page__title">Grid</view>
-        <view class="page__desc">九宫格</view>
-    </view>
-    <view class="page__bd">
-        <mp-grids grids="{{grids}}"></mp-grids>
-    </view>
-</view>
+<div class="page" v-bind:data-weui-theme="theme">
+    <div class="page__hd">
+        <div class="page__title">Grid</div>
+        <div class="page__desc">九宫格</div>
+    </div>
+    <div class="page__bd">
+        <mp-grids v-bind:grids="grids"></mp-grids>
+    </div>
+</div>
 </template>
 
 <script lang="typescript">
 import wepy from '@wepy/core';
 
-const iconTabbar = '../../resources/images/icon_tabbar.png'
+const iconTabbar = '/resources/images/icon_tabbar.png'
 const GRID_DEMO_URL = ''
 
 wepy.page({
     onShareAppMessage() {
         return {
           title: 'grid',
-          path: 'page/weui/example/grid/grid'
+          path: 'page/weui/grid'
         }
       },
     data: { grids: [
@@ -77,7 +79,7 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-grids": "weui-miniprogram/grids/grids"
+    "mp-grids": "module:weui-miniprogram/miniprogram_dist/grids/grids"
   },
   "navigationBarTitleText": "grid"
 }

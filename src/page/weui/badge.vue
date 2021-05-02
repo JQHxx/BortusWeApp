@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
 .blue {
   background: blue;
 }
@@ -22,7 +22,7 @@
         <mp-cells title="未读数红点跟在主题信息后，统一在列表左侧">
             <mp-cell>
                 <div slot="title" style="position: relative;margin-right: 10px;">
-                    <image src="../images/pic_160.png" style="width: 50px; height: 50px; display: block"/>
+                    <image src="../../resources/images/pic_160.png" style="width: 50px; height: 50px; display: block"/>
                     <mp-badge content="99+" style="position: absolute;top: -.4em;right: -.4em;"/>
                 </div>
                 <div>联系人名称</div>
@@ -48,7 +48,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'badge',
-      path: 'page/weui/example/badge/badge'
+      path: 'page/weui/badge'
     }
   }
 });
@@ -56,9 +56,9 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-cells": "weui-miniprogram/cells/cells",
-    "mp-cell": "weui-miniprogram/cell/cell",
-    "mp-badge": "weui-miniprogram/badge/badge"
+    "mp-cells": "module:weui-miniprogram/miniprogram_dist/cells/cells",
+    "mp-cell": "module:weui-miniprogram/miniprogram_dist/cell/cell",
+    "mp-badge": "module:weui-miniprogram/miniprogram_dist/badge/badge"
   },
   "navigationBarTitleText": "badge"
 }

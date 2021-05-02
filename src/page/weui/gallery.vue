@@ -1,4 +1,6 @@
-<style lang="less" src="../../common/lib/common.less" ></style>
+<style lang="less">
+@import "../../common/lib/common.wxss";
+</style>
 <template>
   <div class="page" v-bind:data-weui-theme="theme">
     <div class="page__hd">
@@ -7,9 +9,9 @@
     </div>
     <mp-gallery
       v-bind:show="show"
-      @change="change"
-      @delete="onDelete"
-      @hide="hide"
+      @change="change($event.$wx)"
+      @delete="onDelete($event.$wx)"
+      @hide="hide($event.$wx)"
       v-bind:img-urls="imgUrls"
       delete
       v-bind:hide-on-click="true"
@@ -25,7 +27,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'gallery',
-      path: 'page/weui/example/gallery/gallery',
+      path: 'page/weui/gallery',
     };
   },
   data: {
@@ -56,7 +58,7 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-gallery": "weui-miniprogram/gallery/gallery"
+    "mp-gallery": "module:weui-miniprogram/miniprogram_dist/gallery/gallery"
   },
   "navigationBarTitleText": "gallery"
 }

@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
 .placeholder{
     margin: 5px;
     padding: 0 10px;
@@ -9,7 +9,6 @@
     line-height: 2.3em;
     color: var(--weui-FG-1);
 }
-
 </style>
 <template>
 <div class="page" v-bind:data-weui-theme="theme">

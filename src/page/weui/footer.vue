@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
 .weui-footer{
     margin-bottom: 50px;
 }
@@ -8,36 +8,36 @@
 }
 </style>
 <template>
-<view class="page" v-bind:data-weui-theme="theme">
-    <view class="page__hd">
-        <view class="page__title">Footer</view>
-        <view class="page__desc">页脚</view>
-    </view>
-    <view class="page__bd page__bd_spacing">
-        <view class="weui-footer">
-            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
-        </view>
-        <view class="weui-footer">
-            <view class="weui-footer__links">
+<div class="page" v-bind:data-weui-theme="theme">
+    <div class="page__hd">
+        <div class="page__title">Footer</div>
+        <div class="page__desc">页脚</div>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <div class="weui-footer">
+            <div class="weui-footer__text">Copyright © 2008-2016 weui.io</div>
+        </div>
+        <div class="weui-footer">
+            <div class="weui-footer__links">
                 <navigator url="" class="weui-footer__link">底部链接</navigator>
-            </view>
-            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
-        </view>
-        <view class="weui-footer">
-            <view class="weui-footer__links">
+            </div>
+            <div class="weui-footer__text">Copyright © 2008-2016 weui.io</div>
+        </div>
+        <div class="weui-footer">
+            <div class="weui-footer__links">
                 <navigator url="" class="weui-footer__link">底部链接</navigator>
                 <navigator url="" class="weui-footer__link">底部链接</navigator>
-            </view>
-            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
-        </view>
-        <view class="weui-footer weui-footer_fixed-bottom">
-            <view class="weui-footer__links">
+            </div>
+            <div class="weui-footer__text">Copyright © 2008-2016 weui.io</div>
+        </div>
+        <div class="weui-footer weui-footer_fixed-bottom">
+            <div class="weui-footer__links">
                 <navigator url="" class="weui-footer__link">WeUI首页</navigator>
-            </view>
-            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
-        </view>
-    </view>
-</view>
+            </div>
+            <div class="weui-footer__text">Copyright © 2008-2016 weui.io</div>
+        </div>
+    </div>
+</div>
 </template>
 
 <script lang="typescript">

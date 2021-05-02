@@ -51,3 +51,16 @@ static: ['src/resources','src/demo.theme.json']
 如果在编写过程中存在未提供提示的原生函数，那么可以使用`this.$wx.[Function]`来进行使用
 对应的错误可以忽略。  
 
+### 5. 使用第三方组件  
+
+由于wepy 2.0中采用了原生的方式，但是编译中必须实际存在该UI组件。并且需要使用
+其他具体的方式才可以，下面就列举了如何使用`weui`中的组件在页面的`config`配置中:  
+
+```json
+"usingComponents": {
+  "mp-cells": "module:weui-miniprogram/miniprogram_dist/cells/cells",
+  "mp-cell": "module:weui-miniprogram/miniprogram_dist/cell/cell",
+  "mp-slideview": "module:weui-miniprogram/miniprogram_dist/slideview/slideview"
+}
+```  
+

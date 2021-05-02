@@ -1,5 +1,6 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
+
 icon {
   margin-right: 13px;
 }
@@ -52,11 +53,7 @@ icon {
         <div class="weui-grids">
           <block v-for="item in iconList" v-bind:key="item">
             <navigator url="" class="weui-grid">
-              <mp-icon
-                v-bind:icon="item.icon"
-                v-bind:color="item.color"
-                v-bind:size="item.size"
-              ></mp-icon>
+              <mp-icon v-bind:icon="item.icon" v-bind:color="item.color" v-bind:size="item.size"></mp-icon>
               <div class="weui-grid__label">{{ item.icon }}</div>
             </navigator>
           </block>
@@ -67,12 +64,7 @@ icon {
         <div class="weui-grids">
           <block v-for="item in iconList" v-bind:key="item">
             <navigator url="" class="weui-grid">
-              <mp-icon
-                type="filled"
-                v-bind:icon="item.icon"
-                v-bind:color="item.color"
-                v-bind:size="item.size"
-              ></mp-icon>
+              <mp-icon type="filled" v-bind:icon="item.icon" v-bind:color="item.color" v-bind:size="item.size"></mp-icon>
               <div class="weui-grid__label">{{ item.icon }}</div>
             </navigator>
           </block>
@@ -92,7 +84,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'icons',
-      path: 'page/weui/example/icons/icons',
+      path: 'page/weui/icons',
     };
   },
   data: {
@@ -585,28 +577,13 @@ wepy.page({
       },
     ],
     theme: 'dark'
-  },
-  onLoad() {
-    this.setIconColor(this.theme);
-    const app = getApp();
-    app.watchThemeChange && app.watchThemeChange(this.setIconColor);
-  },
-  methods: {
-    setIconColor(theme: string) {
-      const color = theme === 'dark' ? colorDark : colorLight;
-
-      this.iconList = this.iconList.map((icon) => {
-        icon.color = color;
-        return icon;
-      });
-    },
-  },
+  }
 });
 </script>
 <config>
 {
   "usingComponents": {
-    "mp-icon": "weui-miniprogram/icon/icon"
+    "mp-icon": "module:weui-miniprogram/miniprogram_dist/icon/icon"
   },
   "navigationBarTitleText": "icons"
 }

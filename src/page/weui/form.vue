@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
 .weui-agree .weui-agree__text {
   display: inline;
 }
@@ -16,7 +16,7 @@
           <mp-checkbox-group
             prop="radio"
             v-bind:multi="false"
-            @change="radioChange">
+            @change="radioChange($event.$wx)">
             <mp-checkbox
               v-for="item in radioItems"
               v-bind:key="item.value"
@@ -30,7 +30,7 @@
           <mp-checkbox-group
             prop="checkbox"
             v-bind:multi="true"
-            @change="checkboxChange"
+            @change="checkboxChange($event.$wx)"
           >
             <mp-checkbox
               v-for="item in checkboxItems"
@@ -44,7 +44,7 @@
         <mp-cells title="表单" footer="底部说明文字底部说明文字">
           <mp-cell prop="name" title="姓名" ext-class="">
             <input
-              @input="formInputChange"
+              @input="formInputChange($event.$wx)"
               data-field="name"
               class="weui-input"
               placeholder="请输入姓名"
@@ -52,7 +52,7 @@
           </mp-cell>
           <mp-cell prop="qq" title="qq" ext-class="">
             <input
-              @input="formInputChange"
+              @input="formInputChange($event.$wx)"
               data-field="qq"
               class="weui-input"
               placeholder="请输入qq"
@@ -60,7 +60,7 @@
           </mp-cell>
           <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
             <input
-              @input="formInputChange"
+              @input="formInputChange($event.$wx)"
               data-field="mobile"
               class="weui-input"
               placeholder="请输入手机号"
@@ -76,14 +76,14 @@
               v-model="date"
               start="2015-09-01"
               end="2017-09-01"
-              @change="bindDateChange"
+              @change="bindDateChange($event.$wx)"
             >
               <div class="weui-input">{{ date }}</div>
             </picker>
           </mp-cell>
           <mp-cell prop="vcode" title="验证码" ext-class=" weui-cell_vcode">
             <input
-              @input="formInputChange"
+              @input="formInputChange($event.$wx)"
               data-field="vcode"
               class="weui-input"
               placeholder="请输入验证码"
@@ -91,7 +91,7 @@
             <image
               slot="footer"
               class="weui-vcode-img"
-              src="../images/vcode.jpg"
+              src="../../resources/images/vcode.jpg"
               style="width: 108px"
             ></image>
           </mp-cell>
@@ -99,7 +99,7 @@
         <mp-cells title="提交后表单项报错">
           <mp-cell show-error prop="idcard" title="卡号" ext-class="">
             <input
-              @input="formInputChange"
+              @input="formInputChange($event.$wx)"
               data-field="idcard"
               class="weui-input"
               placeholder="请输入卡号"
@@ -134,11 +134,7 @@
         <mp-cells title="选择">
           <mp-cell ext-class="weui-cell_select weui-cell_select-before">
             <div slot="title" style="width: 105px">
-              <picker
-                @change="bindCountryCodeChange"
-                v-model="countryCodeIndex"
-                v-bind:range="countryCodes"
-              >
+              <picker @change="bindCountryCodeChange($event.$wx)" v-model="countryCodeIndex" v-bind:range="countryCodes">
                 <div class="weui-select">
                   {{ countryCodes[countryCodeIndex] }}
                 </div>
@@ -150,7 +146,7 @@
         <mp-cells title="选择">
           <mp-cell v-bind:has-header="false" ext-class="weui-cell_select">
             <picker
-              @change="bindAccountChange"
+              @change="bindAccountChange($event.$wx)"
               v-model="accountIndex"
               v-bind:range="accounts"
             >
@@ -160,7 +156,7 @@
           <mp-cell ext-class="weui-cell_select weui-cell_select-after">
             <div slot="title" class="weui-label">国家/地区</div>
             <picker
-              @change="bindCountryChange"
+              @change="bindCountryChange($event.$wx)"
               v-model="countryIndex"
               v-bind:range="countries"
             >
@@ -169,7 +165,7 @@
           </mp-cell>
         </mp-cells>
       </mp-form>
-      <checkbox-group slot="tips" @change="bindAgreeChange">
+      <checkbox-group slot="tips" @change="bindAgreeChange($event.$wx)">
         <label class="weui-agree">
           <checkbox class="weui-agree__checkbox-check" />
           <text class="weui-agree__checkbox"></text>
@@ -179,7 +175,7 @@
         </label>
       </checkbox-group>
       <div slot="button">
-        <button class="weui-btn" type="primary" @tap="submitForm">
+        <button class="weui-btn" type="primary" @tap="submitForm($event.$wx)">
           确定
         </button>
       </div>
@@ -194,7 +190,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'form',
-      path: 'page/weui/example/form/form',
+      path: 'page/weui/form',
     };
   },
   data: {
@@ -324,7 +320,7 @@ wepy.page({
       this.isAgree = !!e.detail.value.length
     },
     submitForm() {
-      (this as any).selectComponent('#form').validate((valid:boolean, errors:any) => {
+      this.$wx.selectComponent('#form').validate((valid:boolean, errors:any) => {
         console.log('valid', valid, errors);
         if (!valid) {
           const firstError = Object.keys(errors);
@@ -345,15 +341,14 @@ wepy.page({
 {
   "component": true,
   "navigationBarTitleText": "form",
-
   "usingComponents": {
-    "mp-form-page": "weui-miniprogram/form-page/form-page",
-    "mp-toptips": "weui-miniprogram/toptips/toptips",
-    "mp-cells": "weui-miniprogram/cells/cells",
-    "mp-cell": "weui-miniprogram/cell/cell",
-    "mp-checkbox": "weui-miniprogram/checkbox/checkbox",
-    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
-    "mp-form": "weui-miniprogram/form/form"
+    "mp-form-page": "module:weui-miniprogram/miniprogram_dist/form-page/form-page",
+    "mp-toptips": "module:weui-miniprogram/miniprogram_dist/toptips/toptips",
+    "mp-cells": "module:weui-miniprogram/miniprogram_dist/cells/cells",
+    "mp-cell": "module:weui-miniprogram/miniprogram_dist/cell/cell",
+    "mp-checkbox": "module:weui-miniprogram/miniprogram_dist/checkbox/checkbox",
+    "mp-checkbox-group": "module:weui-miniprogram/miniprogram_dist/checkbox-group/checkbox-group",
+    "mp-form": "module:weui-miniprogram/miniprogram_dist/form/form"
   }
 }
 </config>

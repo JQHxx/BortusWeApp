@@ -50,5 +50,18 @@ declare namespace weui {
             data: any
         }
     }
+
+    export interface UploaderUploadCallbackResult {
+        tempFilePaths: string[]
+        tempFiles: WechatMiniprogram.ImageFile[]
+        contents: ArrayBuffer[]
+    }
+
+    export interface UploaderFail {
+        detail: {
+            type: number
+            errMsg: string
+        }
+    }
 }
 

@@ -1,4 +1,6 @@
-<style lang="less" src="../../common/lib/common.less"></style>
+<style lang="less">
+@import "../../common/lib/common.wxss";
+</style>
 <template>
   <div class="page" v-bind:data-weui-theme="theme">
     <div class="page__hd">
@@ -12,64 +14,24 @@
           <div>标题文字（使用slot）</div>
           <div slot="footer">说明文字</div>
         </mp-cell>
-        <mp-slidediv
-          v-bind:show="true"
-          v-bind:buttons="slideButtons"
-          @buttontap="slideButtonTap"
-        >
+        <mp-slideview v-bind:show="true" v-bind:buttons="slideButtons" @buttontap="slideButtonTap($event.$wx)">
           <mp-cell value="左滑可以删除" footer="说明文字"></mp-cell>
-        </mp-slidediv>
+        </mp-slideview>
       </mp-cells>
       <mp-cells title="带图标、说明的列表项" footer="底部说明文字">
         <mp-cell value="标题文字" footer="说明文字">
-          <image
-            slot="icon"
-            v-bind:src="icon"
-            style="
-              margin-right: 16px;
-              vertical-align: middle;
-              width: 20px;
-              height: 20px;
-            "
-          ></image>
+          <image slot="icon" v-bind:src="icon" style="margin-right: 16px; vertical-align: middle; width: 20px; height: 20px;"></image>
         </mp-cell>
         <mp-cell value="标题文字" footer="说明文字">
-          <image
-            slot="icon"
-            v-bind:src="icon"
-            style="
-              margin-right: 16px;
-              vertical-align: middle;
-              width: 20px;
-              height: 20px;
-            "
-          ></image>
+          <image slot="icon" v-bind:src="icon" style="margin-right: 16px; vertical-align: middle; width: 20px; height: 20px;"></image>
         </mp-cell>
       </mp-cells>
       <mp-cells title="带跳转的列表项">
         <mp-cell hover value="有hover效果，无跳转URL" footer="说明文字">
-          <image
-            slot="title"
-            v-bind:src="icon"
-            style="
-              margin-right: 16px;
-              vertical-align: middle;
-              width: 20px;
-              height: 20px;
-            "
-          ></image>
+          <image slot="title" v-bind:src="icon" style="margin-right: 16px; vertical-align: middle; width: 20px; height: 20px;"></image>
         </mp-cell>
-        <mp-cell link url="./cell" value="有跳转URL" footer="说明文字">
-          <image
-            slot="icon"
-            v-bind:src="icon"
-            style="
-              margin-right: 16px;
-              vertical-align: middle;
-              width: 20px;
-              height: 20px;
-            "
-          ></image>
+        <mp-cell link url="cell" value="有跳转URL" footer="说明文字">
+          <image slot="icon" v-bind:src="icon" style="margin-right: 16px; vertical-align: middle; width: 20px; height: 20px;"></image>
         </mp-cell>
       </mp-cells>
     </div>
@@ -84,7 +46,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'cell',
-      path: 'page/weui/example/cell/cell',
+      path: 'page/weui/cell',
     };
   },
   data: {
@@ -104,8 +66,8 @@ wepy.page({
         text: '警示',
         extClass: 'test',
         src: '../../resources/images/icon_del.svg',
-      },
-    ],
+      }
+    ]
   },
   methods: {
     slideButtonTap(e: WechatMiniprogram.ControlTap) {
@@ -117,9 +79,9 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-cells": "weui-miniprogram/cells/cells",
-    "mp-cell": "weui-miniprogram/cell/cell",
-    "mp-slideview": "weui-miniprogram/slideview/slideview"
+    "mp-cells": "module:weui-miniprogram/miniprogram_dist/cells/cells",
+    "mp-cell": "module:weui-miniprogram/miniprogram_dist/cell/cell",
+    "mp-slideview": "module:weui-miniprogram/miniprogram_dist/slideview/slideview"
   },
   "navigationBarTitleText": "cell"
 }

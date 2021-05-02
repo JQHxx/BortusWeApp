@@ -20,7 +20,7 @@ wepy.page({
 </script>
 <config>
 {
-    "navigationBarTitleText": "小程序组件文档"
+    "navigationBarTitleText": "小程序组件文档",
     "usingComponents": {
         "head": "../../common/head",
         "foot": "../../common/foot"

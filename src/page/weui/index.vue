@@ -113,7 +113,7 @@
       <div class="index-desc">
         以下是对小程序内置组件能力的补充，包括
         WeUI组件库和一些常见的功能组件，具体属性参数详见
-        <navigator url="../component/doc-web-div" class="weui-agree__link"
+        <navigator url="../component/doc-web-view" class="weui-agree__link"
           >小程序开发文档</navigator
         >
       </div>
@@ -122,12 +122,7 @@
       <div class="kind-list">
         <block v-for="item in list" v-bind:key="item.id">
           <div class="kind-list__item">
-            <div
-              v-bind:id="item.id"
-              class="weui-flex kind-list__item-hd"
-              :class="{ 'ind-list__item-hd_show': item.open }"
-              @tap="kindToggle"
-            >
+            <div v-bind:id="item.id" class="weui-flex kind-list__item-hd" :class="{ 'ind-list__item-hd_show': item.open }" @tap="kindToggle($event.$wx)">
               <div class="weui-flex__item">{{ item.name }}</div>
               <image
                 class="kind-list__img"
@@ -140,19 +135,11 @@
             >
               <div class="weui-cells" :class="{ 'weui-cells_show': item.open }">
                 <block v-for="page in item.pages" v-bind:key="page">
-                  <navigator
-                    v-if="page.url"
-                    v-bind:url="page.url"
-                    class="weui-cell weui-cell_access"
-                  >
+                  <navigator v-if="page.url" v-bind:url="page.url" class="weui-cell weui-cell_access">
                     <div class="weui-cell__bd">{{ page.zh }}</div>
                     <div class="weui-cell__ft weui-cell__ft_in-access"></div>
                   </navigator>
-                  <navigator
-                    v-else
-                    url="{{page}}/{{page}}"
-                    class="weui-cell weui-cell_access"
-                  >
+                  <navigator v-else v-bind:url="page" class="weui-cell weui-cell_access">
                     <div class="weui-cell__bd">{{ page }}</div>
                     <div class="weui-cell__ft weui-cell__ft_in-access"></div>
                   </navigator>
@@ -173,7 +160,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: '扩展能力',
-      path: 'page/weui/example/index',
+      path: 'page/weui/index',
     };
   },
   data: {

@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
 .page {
     background-color: var(--weui-BG-2)
 }
@@ -37,7 +37,7 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-loading": "weui-miniprogram/loading/loading"
+    "mp-loading": "module:weui-miniprogram/miniprogram_dist/loading/loading"
   },
   "navigationBarTitleText": "loadmore"
 }

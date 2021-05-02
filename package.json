@@ -16,7 +16,8 @@
   "author": "姚正发 <976691141@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "@wepy/core": "^2.1.0"
+    "@wepy/core": "^2.1.0",
+    "weui-miniprogram": "^1.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
