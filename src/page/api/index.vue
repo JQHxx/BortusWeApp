@@ -7,56 +7,28 @@
 </style>
 <template>
   <div class="container">
-    <set-tab-bar
-      v-if="isSetTabBarPage"
-      @unmount="leaveSetTabBarPage"
-    ></set-tab-bar>
+    <set-tab-bar v-if="isSetTabBarPage" @unmount="leaveSetTabBarPage"></set-tab-bar>
     <div wx:else class="index">
       <div class="index-hd">
-        <image class="index-logo" src="../../resources/images/logo.png"></image>
+        <image class="index-logo" src="/resources/images/apilogo.png"></image>
         <div class="index-desc">
           以下将演示小程序接口能力，具体属性参数详见
-          <navigator url="../component/doc-web-div" class="weui-agree__link"
-            >小程序开发文档</navigator
-          >。
+          <navigator url="../component/doc-web-view" class="weui-agree__link">小程序开发文档</navigator>
         </div>
       </div>
       <div class="index-bd">
         <div class="kind-list">
           <block v-for="item in list" v-bind:key="item.id">
             <div class="kind-list-item">
-              <div
-                v-bind:id="item.id"
-                class="kind-list-item-hd"
-                :class="{ 'kind-list-item-hd-show': tem.open }"
-                @tap="kindToggle"
-              >
+              <div v-bind:id="item.id" class="kind-list-item-hd" :class="{ 'kind-list-item-hd-show': tem.open }" @tap="kindToggle($event.$wx)">
                 <div class="kind-list-text">{{ item.name }}</div>
-                <image
-                  v-if="theme === 'dark'"
-                  class="kind-list-img"
-                  src="resources/kind/{{item.id}}_dark.png"
-                ></image>
-                <image
-                  v-else
-                  class="kind-list-img"
-                  src="resources/kind/{{item.id}}.png"
-                ></image>
+                <image v-if="theme === 'dark'" class="kind-list-img" src="/resources/images/{{item.id}}_dark.png"></image>
+                <image v-else class="kind-list-img" src="/resources/images/{{item.id}}.png"></image>
               </div>
-              <div
-                class="kind-list-item-bd"
-                :class="{ 'kind-list-item-bd-show': item.open }"
-              >
-                <div
-                  class="navigator-box"
-                  :class="{ 'navigator-box-show': item.open }"
-                >
+              <div class="kind-list-item-bd" :class="{ 'kind-list-item-bd-show': item.open }">
+                <div class="navigator-box" :class="{ 'navigator-box-show': item.open }">
                   <block v-for="page in item.pages" v-bind:key="page">
-                    <navigator
-                      url="component/{{page.url}}"
-                      class="navigator"
-                      v-if="page.url !== '@set-tab-bar'"
-                    >
+                    <navigator url="{{page.url}}" class="navigator" v-if="page.url !== '@set-tab-bar'">
                       <div class="navigator-text">{{ page.zh }}</div>
                       <div class="navigator-arrow"></div>
                     </navigator>
@@ -82,10 +54,9 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: '小程序接口能力展示',
-      path: 'page/API/index',
+      path: 'page/api/index',
     };
   },
-
   data: {
     list: [
       {

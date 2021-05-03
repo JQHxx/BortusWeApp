@@ -233,7 +233,8 @@ wepy.app(new App());
     "page/weui/pagination",
     "page/weui/freelayout",
     "page/weui/layeredpresentation",
-    "page/weui/horizontalexpansion"
+    "page/weui/horizontalexpansion",
+    "page/api/login"
   ],
   "window": {
     "navigationBarTextStyle": "@navigationBarTextStyle",
