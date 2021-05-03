@@ -63,5 +63,38 @@ declare namespace weui {
             errMsg: string
         }
     }
+
+    export interface TabbarChange<V> {
+        detail: {
+            index: number
+            item: V
+        }
+    }
+
+    export interface SearchbarSelectResult<V> {
+        detail: {
+            index: number
+            item: V
+        }
+    }
+
+    export interface StickyScroll {
+        detail: {
+            scrollTop: number
+            isFixed: boolean
+        }
+    }
+
+    export interface TabsTabClick {
+        detail: {
+            index: number
+        }
+    }
+
+    export interface TabsChange {
+        detail: {
+            index: number
+        }
+    }
 }
 

@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
 .custom-action {
   padding: 16px 0;
   text-align: center;
@@ -28,7 +28,7 @@
       </div>
     </div>
     <mp-actionSheet
-      @actiontap="btnClick"
+      @actiontap="btnClick($event.$wx)"
       v-bind:show="showDialog"
       v-bind:actions="groups"
       title="这是一个标题，可以为一行或者两行。"
@@ -82,8 +82,8 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
-    "mp-icon": "weui-miniprogram/icon/icon"
+    "mp-actionSheet": "module:weui-miniprogram/miniprogram_dist/actionsheet/actionsheet",
+    "mp-icon": "module:weui-miniprogram/miniprogram_dist/icon/icon"
   },
   "navigationBarTitleText": "actionsheet"
 }

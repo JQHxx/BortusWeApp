@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="wxss">
 page>view {
   width: 100vw;
   max-width: 100vw;
@@ -121,7 +121,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: '自由布局',
-      path: 'page/weui/example/freelayout/freelayout'
+      path: 'page/weui/freelayout'
     }
   },
 });
@@ -129,8 +129,8 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-col": "@miniprogram-component-plus/col",
-    "mp-row": "@miniprogram-component-plus/row"
+    "mp-col": "module:@miniprogram-component-plus/col/miniprogram_dist",
+    "mp-row": "module:@miniprogram-component-plus/row/miniprogram_dist"
   },
   "navigationBarTitleText": "自由布局"
 }

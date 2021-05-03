@@ -1,5 +1,5 @@
-<style lang="less" src="../../common/lib/common.less"></style>
-<style lang="less">
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
 .page {
   background-color: var(--weui-BG-0);
 }
@@ -253,29 +253,16 @@
 <template>
   <div class="page" v-bind:data-weui-theme="theme">
     <block v-if="canIUse">
-      <scroll-div
-        scroll-y
-        style="height: {{layoutHeight}}px"
-        scroll-into-div="{{historyList[historyList.length - 1].id}}"
-      >
+      <scroll-div scroll-y style="height: {{layoutHeight}}px" scroll-into-div="{{historyList[historyList.length - 1].id}}">
         <block v-for="historyItem in historyList" v-bind:key="historyItem.id">
-          <div
-            class="record"
-            v-bind:hidden="historyItem.length === 0"
-            v-bind:id="historyItem.id"
-          >
+          <div class="record" v-bind:hidden="historyItem.length === 0" v-bind:id="historyItem.id">
             <div class="avator"></div>
             <div class="comment">
               <block v-for="item in historyItem.emoji" v-bind:key="item">
                 <block v-if="item.type === 1">{{ item.content }}</block>
-                <div
-                  v-if="item.type === 2"
-                  style="display: inline-block; width: {{lineHeight}}px; height: {{lineHeight}}px"
-                >
-                  <div
-                    class="{{item.imageClass}}"
-                    style="background-image: url({{emojiSource}});transform-origin: 0 0; transform: scale({{lineHeight / 64}});"
-                  ></div>
+                <div v-if="item.type === 2" style="display: inline-block; width: {{lineHeight}}px; height: {{lineHeight}}px">
+                  <div class="{{item.imageClass}}" style="background-image: url({{emojiSource}});transform-origin: 0 0; transform: scale({{lineHeight / 64}});">
+                  </div>
                 </div>
               </block>
             </div>
@@ -305,9 +292,9 @@
                 v-model="comment"
                 v-bind:cursor="cursor"
                 v-bind:focus="focus"
-                @blur="onBlur"
+                @blur="onBlur($event.$wx)"
                 @focus="onFocus"
-                @input="onInput"
+                @input="onInput($event.$wx)"
                 @confirm="onConfirm"
                 @keyboardheightchange="onkeyboardHeightChange"
               />
@@ -316,10 +303,10 @@
           <div
             hover-class="active"
             class="reply_button replay_emotion_button"
-            bindtap="showEmoji"
+            @tap="showEmoji"
           >
             <image
-              src="{{theme === 'dark' ? '../../resources/images/reply_tool_emoji_dark.svg' : '../../resources/images/reply_tool_emoji.svg'}}"
+              src="/resources/images/reply_tool_emoji.svg"
               mode="aspectFit"
               class="reply_tool_pic"
             ></image>
@@ -327,10 +314,10 @@
           <div
             hover-class="active"
             class="reply_button replay_media_button"
-            bindtap="showFunction"
+            @tap="showFunction"
           >
             <image
-              src="{{theme === 'dark' ? '../../resources/images/reply_tool_add_dark.png' : '../../resources/images/reply_tool_add.png'}}"
+              src="/resources/images/reply_tool_add.png"
               mode="aspectFit"
               class="reply_tool_pic"
             ></image>
@@ -343,14 +330,13 @@
         >
           <div
             class="reply_panel"
-            :class="{ show: emojiShow }"
+            :class="{ 'show': emojiShow }"
             v-bind:hidden="!emojiShow"
           >
             <mp-emoji
-              ref="emoji"
               v-bind:source="emojiSource"
               class="mp-emoji"
-              @insertemoji="insertEmoji"
+              @insertemoji="insertEmoji($event.$wx)"
               @delemoji="deleteEmoji"
               @send="onsend"
               backgroundColor="{{theme === 'dark' ? '#191919' : '#EDEDED'}}"
@@ -407,7 +393,7 @@ wepy.page({
   data: {
     lineHeight: 24,
     functionShow: false,
-    emojiShow: false,
+    emojiShow: true,
     comment: '',
     focus: false,
     cursor: 0,
@@ -432,7 +418,7 @@ wepy.page({
     this.layoutHeight =
       wx.getSystemInfoSync().windowHeight - this.safeHeight / 2 + 'px';
 
-    const emojiInstance = this.$refs['emoji'] as any;
+    const emojiInstance = this.$wx.selectComponent('.mp-emoji');
     this.emojiNames = emojiInstance.getEmojiNames();
     this.parseEmoji = emojiInstance.parseEmoji;
   },
@@ -544,7 +530,7 @@ wepy.page({
   "disableScroll": true,
   "navigationBarTitleText": "emoji",
   "usingComponents": {
-    "mp-emoji": "@miniprogram-component-plus/emoji"
+    "mp-emoji": "module:@miniprogram-component-plus/emoji/miniprogram_dist"
   }
 }
 </config>

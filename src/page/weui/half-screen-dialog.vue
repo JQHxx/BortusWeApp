@@ -1,4 +1,6 @@
-<style lang="less" src="../../common/lib/common.less"></style>
+<style lang="wxss">
+@import "../../common/lib/common.wxss";
+</style>
 <template>
   <div class="page" v-bind:data-weui-theme="theme">
     <div class="page__hd">
@@ -9,13 +11,13 @@
     </div>
     <div class="page__bd">
       <div class="weui-btn-area">
-        <button class="weui-btn" type="primary" bindtap="openTypeF">
+        <button class="weui-btn" type="primary" @tap="openTypeF">
           样式一
         </button>
-        <button class="weui-btn" type="primary" bindtap="openTypeS">
+        <button class="weui-btn" type="primary" @tap="openTypeS">
           样式二
         </button>
-        <button class="weui-btn" type="primary" bindtap="openTypeT">
+        <button class="weui-btn" type="primary" @tap="openTypeT">
           样式三
         </button>
       </div>
@@ -36,7 +38,7 @@
         </div>
       </mp-halfScreenDialog>
       <mp-halfScreenDialog
-        @buttontap="buttontap"
+        @buttontap="buttontap($event.$wx)"
         v-bind:show="typeS"
         v-bind:maskClosable="false"
         title="测试标题B"
@@ -56,7 +58,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: 'half-screen-dialog',
-      path: 'page/weui/example/half-screen-dialog/half-screen-dialog',
+      path: 'page/weui/half-screen-dialog',
     };
   },
   data: {
@@ -97,7 +99,7 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-halfScreenDialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
+    "mp-halfScreenDialog": "module:weui-miniprogram/miniprogram_dist/half-screen-dialog/half-screen-dialog"
   },
   "navigationBarTitleText": "half-screen-dialog"
 }

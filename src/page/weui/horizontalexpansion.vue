@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="wxss">
 page>div {
   width: 100vw;
   max-width: 100vw;
@@ -118,7 +118,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: '横向拓展',
-      path: 'page/weui/example/horizontalexpansion/horizontalexpansion'
+      path: 'page/weui/horizontalexpansion'
     }
   },
 });
@@ -126,8 +126,8 @@ wepy.page({
 <config>
 {
   "usingComponents": {
-    "mp-col": "@miniprogram-component-plus/col",
-    "mp-row": "@miniprogram-component-plus/row"
+    "mp-col": "module:@miniprogram-component-plus/col/miniprogram_dist",
+    "mp-row": "module:@miniprogram-component-plus/row/miniprogram_dist"
   },
   "navigationBarTitleText": "横向拓展"
 }

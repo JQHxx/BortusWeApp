@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="wxss">
 .barrage {
   width: 100%;
   height: 80%;
@@ -12,21 +12,14 @@
 </style>
 <template>
   <div class="page" v-bind:data-weui-theme="theme">
-    <video id="myVideo" class="video" v-bind:src="src"
-      loop
-      controls
-      @fullscreenchange="fullscreenchange"
-      vslide-gesture
-      vslide-gesture-in-fullscreen
-      autoplay
-      enable-play-gesture
-    >
-      <barrage ref="barrage" class="barrage" v-if="toggle"></barrage>
+    <video id="myVideo" class="video" v-bind:src="src" loop controls  @fullscreenchange="fullscreenchange" vslide-gesture vslide-gesture-in-fullscreen
+      autoplay enable-play-gesture>
+      <barrage class="barrage" v-if="toggle"></barrage>
     </video>
     <button type="primary" @tap="handleOpenClick">开启弹幕</button>
     <button type="primary" @tap="handleCloseClick">关闭弹幕</button>
     <block v-if="showBarrage">
-      <input style="width: 80%; margin: 30px auto; border-bottom: 1px grey solid" @input="handleInput" placeholder="请输入弹幕信息" v-model="barrageValue" />
+      <input style="width: 80%; margin: 30px auto; border-bottom: 1px grey solid" @input="handleInput($event.$wx)" placeholder="请输入弹幕信息" v-model="barrageValue" />
       <button type="primary" @tap="handleAddClick">发送弹幕</button>
       <button type="primary" @tap="handleTunnelShowClick">显示弹道</button>
       <button type="primary" @tap="handleTunnelHideClick">隐藏弹道</button>
@@ -51,7 +44,7 @@ const msgs = [
 
 const color = ['red', 'rgb(0, 255, 0)', '#0000FF']
 
-const getRandom = (max = 10, min = 0) => Math.floor(Math.random() * (max - min) + min)
+const getRandom = (max = 10, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
 const mockData = (num: number, message = msgs) => {
   const data = []
@@ -64,18 +57,17 @@ const mockData = (num: number, message = msgs) => {
     })
   }
   return data
-}
+};
 
 wepy.page({
   onShareAppMessage() {
     return {
       title: 'barrage',
-      path: 'page/weui/example/barrage/barrage',
+      path: 'page/weui/barrage',
     };
   },
   data: {
-    src:
-      'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
+    src:'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
     toggle: true,
     barrageValue: '',
     showBarrage: false,
@@ -87,16 +79,15 @@ wepy.page({
   },
   methods: {
     addBarrage() {
-      this.$navigate
-      const barrageComp = this.$refs['barrage'] as any;
+      const barrageComp = this.$wx.selectComponent('.barrage')
       this.barrage = barrageComp.getBarrageInstance({
-        font: 'bold 16px sans-serif', // 字体
-        duration: 15, // 弹幕时间 （移动 2000px 所需时长）
-        lineHeight: 2, // 弹幕行高
-        mode: 'overlap', // 弹幕重叠 overlap 不重叠 separate
-        padding: [10, 10, 10, 10], // 弹幕区四周
+        font: 'bold 16px sans-serif',
+        duration: 15,
+        lineHeight: 2,
+        mode: 'overlap',
+        padding: [10, 10, 10, 10],
         range: [0, 1],
-        tunnelShow: false,
+        tunnelShow: false
       });
     },
     fullscreenchange() {
@@ -142,11 +133,10 @@ wepy.page({
 </script>
 <config>
 {
+  // "usingComponents": {
+  //   "barrage": "module:miniprogram-barrage/miniprogram_dist"
+  // },
   "disableScroll": true,
-
-  "navigationBarTitleText": "barrage",
-  "usingComponents": {
-    "barrage": "miniprogram-barrage"
-  }
+  "navigationBarTitleText": "barrage"
 }
 </config>
