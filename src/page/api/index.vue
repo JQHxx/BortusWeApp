@@ -124,10 +124,6 @@ wepy.page({
             url: 'navigation-bar-loading',
           },
           {
-            zh: '设置TabBar',
-            url: '@set-tab-bar',
-          },
-          {
             zh: '页面跳转',
             url: 'navigator',
           },
@@ -138,10 +134,6 @@ wepy.page({
           {
             zh: '创建动画',
             url: 'animation',
-          },
-          {
-            zh: '创建绘画',
-            url: 'canvas',
           },
           {
             zh: '显示操作菜单',
@@ -158,14 +150,6 @@ wepy.page({
           {
             zh: '显示消息提示框',
             url: 'toast',
-          },
-          {
-            zh: '获取WXML节点信息',
-            url: 'get-wxml-node-info',
-          },
-          {
-            zh: 'WXML节点布局相交状态',
-            url: 'intersection-observer',
           },
         ],
       },
@@ -237,17 +221,6 @@ wepy.page({
           {
             zh: 'Wi-Fi',
             url: 'wifi',
-          },
-        ],
-      },
-      {
-        id: 'performance',
-        name: '性能',
-        open: false,
-        pages: [
-          {
-            zh: '获取性能数据',
-            url: 'get-performance',
           },
         ],
       },
