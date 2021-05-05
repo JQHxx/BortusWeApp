@@ -248,11 +248,7 @@ wepy.page({
           {
             zh: 'UDPSocket',
             url: 'udp-socket',
-          },
-          {
-            zh: 'mDNS',
-            url: 'mdns',
-          },
+          }
         ],
       },
       {
@@ -283,14 +279,6 @@ wepy.page({
           {
             zh: '视频',
             url: 'video',
-          },
-          {
-            zh: '音视频合成',
-            url: 'media-container',
-          },
-          {
-            zh: '动态加载字体',
-            url: 'load-font-face',
           },
         ],
       },
@@ -331,29 +319,6 @@ wepy.page({
           },
         ],
       },
-      {
-        id: 'worker',
-        name: '多线程',
-        url: 'worker',
-      },
-      {
-        id: 'framework',
-        name: '框架',
-        pages: [
-          {
-            zh: '双向绑定',
-            url: 'two-way-bindings',
-          },
-          {
-            zh: 'WXS',
-            url: 'wxs',
-          },
-          {
-            zh: '屏幕旋转',
-            url: 'resizable',
-          },
-        ],
-      },
     ],
     isSetTabBarPage: false,
     theme: 'light',
@@ -372,19 +337,12 @@ wepy.page({
   onHide() {
     this.leaveSetTabBarPage();
   },
-
   methods: {
     kindToggle(e: WechatMiniprogram.ControlTap) {
       const id = e.currentTarget.id;
       const list = this.list;
       for (let i = 0, len = list.length; i < len; ++i) {
         if (list[i].id === id) {
-          if (list[i].url) {
-            wx.navigateTo({
-              url: 'component/' + list[i].url,
-            });
-            return;
-          }
           list[i].open = !list[i].open;
         } else {
           list[i].open = false;

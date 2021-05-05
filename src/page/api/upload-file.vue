@@ -44,7 +44,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: '上传文件',
-      path: 'packageAPI/pages/upload-file/upload-file',
+      path: '/page/api/upload-file',
     };
   },
   data: {
@@ -53,8 +53,6 @@ wepy.page({
   },
   methods: {
     chooseImage() {
-      const self = this;
-
       wx.chooseImage({
         count: 1,
         sizeType: ['compressed'],

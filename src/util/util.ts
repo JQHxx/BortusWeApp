@@ -16,7 +16,6 @@ export function formatTime(time: number) {
 export function formatLocation(longitude: number, latitude: number) {
     const lng = longitude.toFixed(2)
     const lat = latitude.toFixed(2)
-
     return {
         longitude: lng.split('.'),
         latitude: lat.split('.')

@@ -31,7 +31,7 @@ wepy.page({
   onShareAppMessage() {
     return {
       title: '网络请求',
-      path: 'packageAPI/pages/request/request',
+      path: '/page/api/request',
     };
   },
   data: {
