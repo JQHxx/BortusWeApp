@@ -9,7 +9,7 @@ input {
   <div class="container">
     <head title="addPhoneContact" />
     <div class="page-body">
-      <form @submit="submit">
+      <form @submit="submit($event.$wx)">
         <div class="page-section">
           <div class="weui-cells__title">姓氏</div>
           <div class="weui-cells weui-cells_after-title">

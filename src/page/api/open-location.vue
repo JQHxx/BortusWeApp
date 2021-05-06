@@ -6,7 +6,7 @@
     <head title="openLocation" />
     <div class="page-body">
       <div class="page-section">
-        <form @submit="openLocation">
+        <form @submit="openLocation($event.$wx)">
           <div class="weui-cells weui-cells_after-title">
             <div class="weui-cell weui-cell_input">
               <div class="weui-cell__hd">

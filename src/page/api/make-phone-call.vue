@@ -25,13 +25,9 @@
     <div class="page-body">
       <div class="page-section">
         <div class="desc">请在下方输入电话号码</div>
-        <input class="input" type="number" name="input" @input="bindInput" />
+        <input class="input" type="number" name="input" @input="bindInput($event.$wx)" />
         <div class="btn-area">
-          <button
-            type="primary"
-            @tap="makePhoneCall"
-            v-bind:disabled="disabled"
-          >
+          <button type="primary" @tap="makePhoneCall" v-bind:disabled="disabled">
             拨打
           </button>
         </div>

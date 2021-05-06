@@ -304,6 +304,7 @@ wepy.page({
       {
         id: 'storage',
         name: '数据',
+        open: false,
         pages: [
           {
             zh: '本地存储',

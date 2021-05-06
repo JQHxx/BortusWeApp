@@ -15,7 +15,7 @@
               <div class="weui-cell__bd">
                 <picker
                   v-bind:range="sourceType"
-                  @change="sourceTypeChange"
+                  @change="sourceTypeChange($event.$wx)"
                   v-model="sourceTypeIndex"
                   mode="selector"
                 >
@@ -32,7 +32,7 @@
               <div class="weui-cell__bd">
                 <picker
                   v-bind:range="sizeType"
-                  @change="sizeTypeChange"
+                  @change="sizeTypeChange($event.$wx)"
                   v-model="sizeTypeIndex"
                   mode="selector"
                 >
@@ -47,7 +47,7 @@
               <div class="weui-cell__bd">
                 <picker
                   v-bind:range="count"
-                  @change="countChange"
+                  @change="countChange($event.$wx)"
                   v-model="countIndex"
                   mode="selector"
                 >

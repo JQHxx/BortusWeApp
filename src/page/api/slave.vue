@@ -30,16 +30,7 @@
       </div>
       <button type="primary" @tap="chaneMode">返回主机模式</button>
       <block v-if="input">
-        <input
-          style="
-            width: 200px;
-            margin: 0 auto;
-            background: var(--weui-BG-2);
-            padding: 5px;
-          "
-          placeholder="写个数字"
-          @confirm="onConfirm($event.$wx)"
-        />
+        <input style="width: 200px; margin: 0 auto; background: var(--weui-BG-2); padding: 5px;" placeholder="写个数字" @confirm="onConfirm($event.$wx)" />
       </block>
       <div>
         <block v-if="connects.length > 0">

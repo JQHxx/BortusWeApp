@@ -8,7 +8,7 @@
 <template>
   <div class="container">
     <head title="setNaivgationBarTitle" />
-    <form class="page-body" @submit="setNaivgationBarTitle">
+    <form class="page-body" @submit="setNaivgationBarTitle($event.$wx)">
       <div class="weui-cells weui-cells_after-title">
         <div class="weui-cell weui-cell_input">
           <div class="weui-cell__hd">
@@ -40,7 +40,7 @@ wepy.page({
     return {
       title: '设置页面标题',
       path:
-        'packageAPI/pages/set-navigation-bar-title/set-navigation-bar-title',
+        '/page/api/set-navigation-bar-title',
     };
   },
   methods: {

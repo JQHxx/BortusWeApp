@@ -51,26 +51,8 @@
           <button class="block1" style="width: 150px; margin: 50px auto">
             示例按钮
           </button>
-          <a
-            class="block1"
-            style="
-              display: block;
-              margin: 50px auto;
-              width: 150px;
-              text-align: center;
-            "
-            >示例超链接</a
-          >
-          <text
-            class="block1"
-            style="
-              display: block;
-              margin: 50px auto;
-              width: 150px;
-              text-align: center;
-            "
-            >示例文本</text
-          >
+          <a class="block1" style="display: block; margin: 50px auto; width: 150px; text-align: center;">示例超链接</a>
+          <text class="block1" style="display: block; margin: 50px auto; width: 150px; text-align: center;">示例文本</text>
         </div>
         <button v-bind:disabled="!canIUse" type="primary" @tap="change">
           开启动画

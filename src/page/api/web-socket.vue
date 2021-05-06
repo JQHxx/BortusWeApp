@@ -10,7 +10,7 @@
           <div class="weui-cell weui-cell_switch">
             <div class="weui-cell__bd">Socket状态</div>
             <div class="weui-cell__ft">
-              <switch @change="toggleSocket" v-bind:disabled="!hasLogin" />
+              <switch @change="toggleSocket($event.$wx)" v-bind:disabled="!hasLogin" />
             </div>
           </div>
           <div class="weui-cell">

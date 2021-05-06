@@ -33,7 +33,7 @@
           <button
             type="primary"
             open-type="getUserInfo"
-            @getuserinfo="getUserInfo"
+            @getuserinfo="getUserInfo($event.$wx)"
           >
             获取用户信息
           </button>

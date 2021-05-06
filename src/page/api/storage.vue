@@ -18,7 +18,7 @@
                 placeholder="请输入key"
                 name="key"
                 v-model="key"
-                @input="keyChange"
+                @input="keyChange($event.$wx)"
               />
             </div>
           </div>
@@ -33,7 +33,7 @@
                 placeholder="请输入value"
                 name="data"
                 v-model="data"
-                @input="dataChange"
+                @input="dataChange($event.$wx)"
               />
             </div>
           </div>
